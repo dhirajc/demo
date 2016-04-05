@@ -1,5 +1,5 @@
 
-<%= form_for @product ,  :url  => admin_products_path  do |f| %>
+<%= form_for @product ,  :url  => admin_products_path, html: { multipart: true }  do |f| %>
  
  <li> 
  	<%= f.label :name %>
@@ -11,5 +11,6 @@
   <%= f.text_area :description %>
  </li></br>
  
+ <li> <%= f.file_field :avatar %></li><br/>
 <%= f.submit "Submit" %>
 <% end %>
