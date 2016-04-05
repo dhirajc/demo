@@ -1,0 +1,15 @@
+
+<%= form_for @product ,  :url  => admin_products_path  do |f| %>
+ 
+ <li> 
+ 	<%= f.label :name %>
+  	<%= f.text_field :name%>
+ </li>
+ 
+ <li>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+ </li></br>
+ 
+<%= f.submit "Submit" %>
+<% end %>
