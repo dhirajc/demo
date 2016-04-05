@@ -7,11 +7,13 @@
 
 
 <tr>
-<% @products.each_with_index do |p,index| %>
+<% @products.each do |p|%>
 	
 <td><%= p.name %></td>
 <td><%= p.description%></td>
-
+<td><%= link_to 'Show',  products_show_path(p) %></td>
+<td><%= link_to 'Edit', "#" %></td>
+<td><%= link_to 'Destroy', "#" ,:confirm => 'Are you sure?', :method => :delete %></td>
 </tr>
 </table>
 <% end %>
