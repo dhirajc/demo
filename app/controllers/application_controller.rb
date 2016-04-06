@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def not_found
+    
+  # end
+
 
 end
