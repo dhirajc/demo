@@ -1,4 +1,11 @@
 class Admin::ProductsController < ApplicationController
+	before_filter :authorize_admin
+
+
+	def authorize_admin
+ 		return unless !current_user.admin?
+  		redirect_to root_path, alert: 'You are not authorized to access this page!'
+ 	end
 
 	def new
 		@product = Product.new
@@ -20,7 +27,8 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def update
- 			if @product.update(product_params)
+		@product = Product.find(params[:id])
+ 			if @product.update_attributes(product_params)
  				flash[:notice] = 'Successfully updated'
       	redirect_to new_admin_product_path
     	else
