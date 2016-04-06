@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   resources :products , except: [:show , :index]  
   end
-  get '/products' => "products#index"
 
-  root 'dashboard#index'
+  get '/products' => "products#index"
+  get '/products/:id/show' => "products#show" , as: 'products_show'
+  root 'dashboard#index' 
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,16 +3,20 @@
 	<th>Name</th>
 	<th>Description</th>
 	<th>Image</th>
-	<!-- <th>Image</th> -->
 </tr>
 
-
 <tr>
+
 <% @products.each do |p| %>
 <td><%= p.name %></td>
 <td><%= p.description%></td>
 <td><%= image_tag p.avatar.url(:thumb) %></td>	
-</tr>
+<td><%= link_to 'Show',  products_show_path(p) %></td>
+<!-- <td><%#= link_to 'Edit',  edit_admin_product_path(p) %></td>
+<td><%#= link_to 'Destroy', "admin_product_path(p)" ,:confirm => 'Are you sure?', :method => :delete %></td>
+</tr> -->
+
 </table>
+
 <% end %>
 
