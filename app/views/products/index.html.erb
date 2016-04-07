@@ -10,8 +10,9 @@
 <% @products.each do |p| %>
 <td><%= p.name %></td>
 <td><%= p.description%></td>
-<td><%= image_tag p.avatar.url(:thumb) %></td>	
+<td><%= image_tag p.avatar.url(:medium) %></td>	
 <td><%= link_to 'Show',  products_show_path(p) %></td>
+<td><%= link_to 'customize',  looks_index_path %></td>
 <!-- <td><%#= link_to 'Edit',  edit_admin_product_path(p) %></td>
 <td><%#= link_to 'Destroy', "admin_product_path(p)" ,:confirm => 'Are you sure?', :method => :delete %></td>
 </tr> -->

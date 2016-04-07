@@ -7,7 +7,6 @@ class Admin::ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
-			binding.pry
 			if @product.save
 				flash[:notice] = "Product successfully created"
 				redirect_to admin_dashboard_index_path

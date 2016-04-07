@@ -1,0 +1,23 @@
+<%= form_for @accessory ,  :url  => new_admin_accessory_path, html: { multipart: true }  do |f| %>
+ 
+ <li> 
+ 	<%= f.label :acc_name %>
+ 
+  	<%= f.text_field :acc_name %>
+ </li>
+ 
+ <li>
+  	<%= f.label :variant%>
+  	<%= f.text_field :variant %>
+ </li>
+ </li>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+
+
+ </br>
+ 
+
+<%= f.submit "Submit" %>
+
+<% end %>
