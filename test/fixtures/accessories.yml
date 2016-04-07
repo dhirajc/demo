@@ -3,11 +3,11 @@
 one:
   acc_name: MyString
   variant: MyString
-  product_id_id: 
+  product_id: 
   price: 1
 
 two:
   acc_name: MyString
   variant: MyString
-  product_id_id: 
+  product_id: 
   price: 1

@@ -1,4 +1,4 @@
-<%= form_for @accessory ,  :url  => new_admin_accessory_path, html: { multipart: true }  do |f| %>
+<%= form_for @accessory , html: { multipart: true }, url: admin_accessories_path, method: :POST do |f| %>
  
  <li> 
  	<%= f.label :acc_name %>
@@ -13,8 +13,6 @@
  </li>
     <%= f.label :price %>
     <%= f.text_field :price %>
-
-
  </br>
  
 

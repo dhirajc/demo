@@ -5,6 +5,7 @@ class LooksController < ApplicationController
   end
 
   def new
+    binding.pry
     @looks = Look.new
   end
 

@@ -3,7 +3,7 @@ class CreateAccessories < ActiveRecord::Migration
     create_table :accessories do |t|
       t.string :acc_name
       t.string :variant
-      t.references :product_id, index: true, foreign_key: true
+      t.references :product, index: true, foreign_key: true
       t.integer :price
 
       t.timestamps null: false

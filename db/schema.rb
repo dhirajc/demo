@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407070230) do
+ActiveRecord::Schema.define(version: 20160407104354) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "acc_name"
     t.string   "variant"
-    t.integer  "product_id_id"
+    t.integer  "product_id"
     t.integer  "price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "accessories", ["product_id_id"], name: "index_accessories_on_product_id_id"
+  add_index "accessories", ["product_id"], name: "index_accessories_on_product_id"
 
   create_table "looks", force: :cascade do |t|
     t.string   "name"
