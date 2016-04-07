@@ -5,4 +5,5 @@ class Product < ActiveRecord::Base
   	# validates :description, presence: true
   	has_many :accessories
   	has_many :looks
+
 end
