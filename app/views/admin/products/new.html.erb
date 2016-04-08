@@ -1,4 +1,29 @@
 
+<% if @products.exists? %>
+<table>
+<tr>
+	<th>Name</th>
+	<th>Description</th>
+	<th>Image</th>
+</tr>
+
+<tr>
+
+<% @products.each do |p| %>
+<td><%= p.name %></td>
+<td><%= p.description%></td>
+<td><%= image_tag p.avatar.url(:thumb) %></td>	
+<td><%= link_to 'Show',  products_show_path(p) %></td>
+<td><%= link_to 'Edit',  edit_admin_product_path(p) %></td>
+<td><%= link_to 'Destroy', admin_product_path(p) ,:confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+
+</table>
+
+<% end %>
+<% end %>
+</br>
+
 <%= form_for @product ,  :url  => admin_products_path, html: { multipart: true }  do |f| %>
  
  <li> 
@@ -7,10 +32,11 @@
  </li>
  
  <li>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  	<%= f.label :description %>
+  	<%= f.text_area :description %>
  </li></br>
  
  <li> <%= f.file_field :avatar %></li><br/>
 <%= f.submit "Submit" %>
+
 <% end %>

@@ -1,0 +1,21 @@
+<table>
+<tr>
+	<th>Name</th>
+	<th>Type</th>
+	<th>Price</th>
+</tr>
+
+<tr>
+
+<% @accessories.each do |f| %>
+<td><%= f.acc_name %></td>
+<td><%= f.variant %></td>
+<td><%= f.price %></td>	
+<td><%= link_to 'Show', "#" %></td>
+<td><%= link_to 'Edit', "#" %></td>
+<td><%= link_to 'Destroy', "#" ,:confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+
+</table>
+
+<% end %>

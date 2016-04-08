@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  neckwear: MyString
+  shirts: MyString
+  shoes: MyString
+
+two:
+  name: MyString
+  neckwear: MyString
+  shirts: MyString
+  shoes: MyString
