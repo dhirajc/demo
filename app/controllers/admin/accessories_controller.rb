@@ -11,14 +11,13 @@ def new
 end	
 
 def create
-  redirect_to :back
-  # @accessory = Accessory.new(accessories_params)
-  #   if @accessory.save
-  #     flash[:notice] = "accessory successfully created"
-  #     redirect_to admin_accessories_path
-  #   else
-  #     render :action => 'new'
-  #   end
+  @accessory = Accessory.new(accessories_params)
+    if @accessory.save
+      flash[:notice] = "accessory successfully created"
+      redirect_to admin_accessories_path
+    else
+      render :action => 'new'
+    end
 end
 
 def show

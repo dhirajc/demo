@@ -1,6 +1,7 @@
+<table class="table table-bordered">
 
 <% if @products.exists? %>
-<table>
+
 <tr>
 	<th>Name</th>
 	<th>Description</th>
@@ -14,31 +15,30 @@
 <td><%= p.description%></td>
 <td><%= image_tag p.avatar.url(:thumb) %></td>	
 <td><%= link_to 'Show',  products_show_path(p) %></td>
-<td><%= link_to 'Edit',  "#" %></td>
-<td><%= link_to 'Destroy', "#"  %></td>
-<!-- <td><%#= link_to 'Edit',  edit_admin_product_path(p) %></td>
-<td><%#= link_to 'Destroy', admin_product_path(p) ,:confirm => 'Are you sure?', :method => :delete %></td> -->
+<td><%= link_to 'Edit',  edit_admin_product_path(p) %></td>
+<td><%= link_to 'Destroy', admin_product_path(p) ,:confirm => 'Are you sure?', :method => :delete %></td> 
 </tr>
 
+<% end %>
+<% end %>
+  
 </table>
-
-<% end %>
-<% end %>
 </br>
 
 <%= form_for @product ,  :url  => admin_products_path, html: { multipart: true }  do |f| %>
- 
- <li> 
- 	<%= f.label :name %>
-  	<%= f.text_field :name%>
- </li>
- 
- <li>
-  	<%= f.label :description %>
-  	<%= f.text_area :description %>
- </li></br>
- 
- <li> <%= f.file_field :avatar %></li><br/>
-<%= f.submit "Submit" %>
-
-<% end %>
+<form>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" ,:placeholder => "Name" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description , :class => "form-control" , :placeholder => "Description" %>
+  </div>
+  <div class="form-group">
+  	<%= f.label :image %>
+    <%= f.file_field :avatar %>
+  </div>
+  <%= f.submit "Submit", :class => "btn btn-default" %>
+  <% end %>
+</form>
