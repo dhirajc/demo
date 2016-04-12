@@ -1,5 +1,12 @@
 class Admin::AccessoriesController < ApplicationController
+before_filter :authorize_admin
 
+
+
+def authorize_admin
+  return unless !current_user.admin?
+    redirect_to root_path, alert: 'You are not authorized to access this page!'
+end
 
 def index
 	@accessories = Accessory.all
