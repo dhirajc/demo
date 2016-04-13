@@ -37,7 +37,7 @@ end
 
 def update
   @accessory = Accessory.find(params[:id])
-  if @accessory.update_attribute(accessories_params)
+  if @accessory.update_attributes(accessories_params)
    redirect_to admin_accessories_path , :notice => "Updated Successfully"
  else
    render 'edit'
