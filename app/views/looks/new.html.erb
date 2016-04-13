@@ -9,6 +9,7 @@
 	  </div>
 	  <div class="form-group">
 	  	<%= f.label :neckwear %><br>
+	  	<%binding.pry%>
     	<%= f.select(:neckwear ,Accessory.where("variant IN (?)", "neckwear").pluck(:acc_name),{:prompt => 'Please select bow type'}) %>
 	  </div>
 	  <div class="form-group">
