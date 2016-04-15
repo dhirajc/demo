@@ -5,7 +5,6 @@ class LooksController < ApplicationController
   end
 
   def new
-    #binding.pry
     @looks = Look.new
   end
 
@@ -38,8 +37,6 @@ class LooksController < ApplicationController
 
   def show
   end
-
-
 
   private 
    

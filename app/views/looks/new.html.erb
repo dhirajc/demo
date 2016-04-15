@@ -15,7 +15,8 @@
 	  <div class="form-group">
 	  	<%= f.label :shirts %><br>
     	<%= f.select(:shirts,Accessory.where("variant IN (?)", "shirts").pluck(:acc_name,:acc_avatar_file_name),{:prompt => 'Please select shirt type'}) %>
-         </div>	  
+        </div>
+	 
 	  <div class="form-group">
 	  	<%= f.label :shoes %><br>
     	<%= f.select(:shoes, Accessory.where("variant IN (?)", "shoes").pluck(:acc_name),{:prompt => 'Please select shoe type'}) %>
@@ -25,3 +26,14 @@
 	  	<%= f.submit 'Submit', class: 'btn btn-default' %>  	
   </div>
 <%end%>
+
+<script>
+	$("#look_neckwear").change(function() {
+		$("#test").attr('src')
+  	var id = $(this).val();
+  	// $.get('/admin/accessories/12').success(function(data) {
+  	// 	alert(data);
+  	//  } )
+   //  	$("#data_" + id).addClass("toggleShow")
+   //      .siblings(".toggleShow").removeClass("toggleShow");
+	});</script>
