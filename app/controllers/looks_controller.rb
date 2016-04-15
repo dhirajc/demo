@@ -5,12 +5,11 @@ class LooksController < ApplicationController
   end
 
   def new
-    #binding.pry
     @looks = Look.new
   end
 
   def create
-    @look = Look.new(look_params)
+    @look = Look.new(looks_params)
     #@look.update_column(:user_id => current_user.id)
       if @look.save
         flash[:notice] = "look successfully created"
@@ -38,8 +37,6 @@ class LooksController < ApplicationController
 
   def show
   end
-
-
 
   private 
    

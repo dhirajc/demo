@@ -29,7 +29,14 @@ end
 
 def show
   @accessory = Accessory.find(params[:id])
+  respond_to do |format|
+    format.html
+    format.json {render json: @accessory.to_json(:only => [ :id,:acc_name, :price, :product_id, :variant ]), :methods => [:avatar_url] }
+    #render :json => @model.to_json(:only => [:id,:name,:homephone,:cellphone])
+
+  end
 end
+
 
 def edit
   @accessory = Accessory.find(params[:id])
