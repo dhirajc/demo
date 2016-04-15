@@ -10,18 +10,18 @@ class LooksController < ApplicationController
   end
 
   def create
-    @look = Look.new(look_params)
+    @look = Look.new(looks_params)
     #@look.update_column(:user_id => current_user.id)
       if @look.save
         flash[:notice] = "look successfully created"
-        redirect_to look_index_path
+        redirect_to looks_path
       else
         render :action => 'new'
       end
     end
 
   def update
-    if @look.update(look_params)
+    if @look.update(looks_params)
       flash[:notice] = 'Successfully updated'
       redirect_to looks_new_path
     else
