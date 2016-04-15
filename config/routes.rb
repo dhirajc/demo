@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
+  resources :events
   get '/myaccount' => "users#myaccount"
 ##### New added for custom error
 # unless Rails.env.test?
