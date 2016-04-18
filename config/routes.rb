@@ -21,13 +21,15 @@ Rails.application.routes.draw do
   root 'dashboard#index' 
 
   devise_for :users
-
+  resources :users
+  resources :events
+  get '/myaccount' => "users#myaccount"
 ##### New added for custom error
-unless Rails.env.test?
-  get '404', :to => 'errors#page_not_found'
-  get '422', :to => 'errors#server_error'
-  get '500', :to => 'errors#server_error'
-end
+# unless Rails.env.test?
+#   get '404', :to => 'errors#page_not_found'
+#   get '422', :to => 'errors#server_error'
+#   get '500', :to => 'errors#server_error'
+# end
 #### custom error end here
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -40,7 +40,7 @@ class Admin::ProductsController < ApplicationController
 	def destroy
 		@product = Product.find(params[:id])
 		@product.destroy
-		flash[:notice] = "Product successfully destroyed"
+			flash[:notice] = "Product successfully destroyed"
 		redirect_to :back
 	end
 

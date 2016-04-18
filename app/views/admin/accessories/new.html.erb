@@ -1,21 +1,30 @@
 <%= form_for @accessory , html: { multipart: true }, url: admin_accessories_path, method: :POST do |f| %>
- 
- <li> 
- 	<%= f.label :acc_name %>
- 
-  	<%= f.text_field :acc_name %>
- </li>
- 
- <li>
-  	<%= f.label :variant%>
-  	<%= f.text_field :variant %>
- </li>
- </li>
-    <%= f.label :price %>
-    <%= f.text_field :price %>
- </br>
- 
 
-<%= f.submit "Submit" %>
+<form>
+  
+  <div class="form-group">
+  	<%= f.label :acc_name %>
+  	<%= f.text_field :acc_name , :class => "form-control" ,  :placeholder => "Accessory Name"  %>
+  </div>
+  
+  <div class="form-group">
+  	<%= f.label :variant%>
+  	<%= f.text_field :variant , :class =>"form-control", :placeholder => "Variant" %>
+  </div>
+  
+  <div class="form-group">
+  	<%= f.label :price %>
+    <%= f.text_field :price , class:  "form-control
+    " , placeholder: "Price" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :acc_avatar %>
+  </div>
+
+<%= f.submit "Submit", class: "btn btn-default" %>
 
 <% end %>
+
+</form>

@@ -1,0 +1,18 @@
+<%= form_for @accessory , html: { multipart: true }, url: admin_accessory_path, method: :PUT do |f| %>
+<form>
+  <div class="form-group">
+    <%= f.label :acc_name %>
+    <%= f.text_field :acc_name , :class => "form-control" ,  :placeholder => "Accessory Name"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :variant %>
+    <%= f.text_field :variant , :class =>"form-control", :placeholder => "Variant" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price , class:  "form-control
+    " , placeholder: "Price" %>
+  </div>
+<%= f.submit "Submit", class: "btn btn-default" %>
+<% end %>
+</form>

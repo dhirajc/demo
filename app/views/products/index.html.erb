@@ -1,24 +1,22 @@
-<table>
-<tr>
-	<th>Name</th>
-	<th>Description</th>
-	<th>Image</th>
-</tr>
-
-<tr>
-
-<% @products.each do |p| %>
-<td><%= p.name %></td>
-<td><%= p.description%></td>
-<td><%= image_tag p.avatar.url(:medium) %></td>	
-<td><%= link_to 'Show',  products_show_path(p) %></td>
-<td> <%= link_to 'Customize',  {:controller => "looks", 
+<div class="row">
+	<% @products.each do |p| %>
+<div class="col-sm-6 col-md-4">
+<div class="thumbnail">
+<%= image_tag p.avatar.url(:thumb) %>
+<div class="caption">
+<h3><%= p.name %></h3>
+<p><%= p.description%></p>
+<p>
+<%= link_to 'Show',  products_show_path(p) , :class => "btn btn-primary"%>
+<%= link_to 'Customize',  { :controller => "looks", 
                                        :action => "new", 
                                        :product_id => p.id, 
-                                        }  %></td>
-<!-- <td><%#= link_to 'Edit',  edit_admin_product_path(p) %></td>
-<td><%#= link_to 'Destroy', "admin_product_path(p)" ,:confirm => 'Are you sure?', :method => :delete %></td>
-</tr> -->
-</table>
-<% end %> 
- 
+                                        } ,  :class => "btn btn-default" %>
+                                        </p> 
+</div>
+</div>
+</div>
+<% end %>
+</div>
+
+
