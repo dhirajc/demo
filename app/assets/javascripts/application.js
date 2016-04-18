@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(function (){
+	jQuery.noConflict();
+	$('#event_event_date').datepicker({
+      dateFormat: 'dd/mm/yy',
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      showWeek: true,
+      firstDay: 1
+    });
+});
