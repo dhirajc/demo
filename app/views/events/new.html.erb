@@ -17,3 +17,29 @@
 	</div>
 	
 <% end %>
+
+
+
+<table class="table table-bordered">
+
+<% if @events.exists? %>
+
+<tr>
+	<th>Event Name</th>
+	<th>Event Date</th>
+</tr>
+
+<tr>
+
+<% @events.each do |e| %>
+<td><%= e.event_name %></td>
+<td><%= e.event_date %></td>	
+<!-- <td><%#= link_to 'Show',  products_show_path(p) %></td>
+<td><%#= link_to 'Edit',  edit_admin_product_path(p) %></td>
+<td><%#= link_to 'Destroy', admin_product_path(p) ,:confirm => 'Are you sure?', :method => :delete %></td> --> 
+</tr>
+<% end %>
+<% end %>
+  
+</table>
+</br>

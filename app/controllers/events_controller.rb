@@ -1,18 +1,19 @@
 class EventsController < ApplicationController
 
-	def index
-		@event = Event.where(:user_id => current_user.id)
-	end
+	# def index
+	# 	@event = Event.where(:user_id => current_user.id)
+	# end
 
 	def new
 		@event = current_user.events.new
+		@events = Event.where(:user_id => current_user.id)
 	end
 
 	def create
 		@event = Event.create(events_params)
 		if @event.save
 			flash[:notice] = "Event Successfully created"
-			redirect_to events_path
+			redirect_to :back
 		else
 			render :new
 			flash[:notice] = "Please enter events detail properly"

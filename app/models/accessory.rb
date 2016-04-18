@@ -7,4 +7,5 @@ class Accessory < ActiveRecord::Base
   def avatar_url
   	acc_avatar.url(:medium)
   end
+
 end
