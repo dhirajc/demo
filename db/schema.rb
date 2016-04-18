@@ -13,8 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160415075237) do
 
-
-
   create_table "accessories", force: :cascade do |t|
     t.string   "acc_name"
     t.string   "variant"
