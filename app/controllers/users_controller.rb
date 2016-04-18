@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
 def myaccount
-	#binding.pry
-	#@user = 
+	@user = User.find(current_user.id)
 end
 
 end
