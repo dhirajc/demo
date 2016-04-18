@@ -11,15 +11,23 @@
 	  	<%= f.label :neckwear %><br>
 	  	<%#binding.pry%>
     	<%= f.select(:neckwear , Accessory.where("variant IN (?)", "neckwear").pluck(:acc_name,:acc_avatar_file_name),{:prompt => 'Please select bow type'}) %>
+    	<img id="neckwear"></img>
 	  </div>
 	  <div class="form-group">
 	  	<%= f.label :shirts %><br>
-    	<%= f.select(:shirts,Accessory.where("variant IN (?)", "shirts").pluck(:acc_name,:acc_avatar_file_name),{:prompt => 'Please select shirt type'}) %>
+    	<%= f.select(:shirts,Accessory.where("variant IN (?)", "shirts").pluck(:acc_name,:id),{:prompt => 'Please select shirt type'}) %>
+    	<div>
+    	<img id="shirts"></img>
+    	</div>
         </div>
 	 
 	  <div class="form-group">
 	  	<%= f.label :shoes %><br>
-    	<%= f.select(:shoes, Accessory.where("variant IN (?)", "shoes").pluck(:acc_name),{:prompt => 'Please select shoe type'}) %>
+    	<%= f.select(:shoes, Accessory.where("variant IN (?)", "shoes").pluck(:acc_name,:id),{:prompt => 'Please select shoe type'}) %>
+    	<div>
+    		<img id="shoes"></img>
+    	</div>
+    	
 	  </div>
 	  	<%#= f.hidden_field :product_id, :value => @product.id%>
 	  <%# binding.pry %>
@@ -28,12 +36,38 @@
 <%end%>
 
 <script>
-	$("#look_neckwear").change(function() {
-		$("#test").attr('src')
+
+
+$("#look_shoes").change(function() {
   	var id = $(this).val();
-  	// $.get('/admin/accessories/12').success(function(data) {
-  	// 	alert(data);
-  	//  } )
-   //  	$("#data_" + id).addClass("toggleShow")
-   //      .siblings(".toggleShow").removeClass("toggleShow");
-	});</script>
+        $.ajax({
+            dataType: 'json',  // not jsonp
+            url: "http://localhost:3000/admin/accessories/" + id,
+            success: function(response) {
+                $('#neckwear').attr('src',response.avatar_url)
+            }
+        });  	
+});
+$("#look_shirts").change(function() {
+  	var id = $(this).val();
+        $.ajax({
+            dataType: 'json',  // not jsonp
+            url: "http://localhost:3000/admin/accessories/" + id,
+            success: function(response) {
+                $('#shirts').attr('src',response.avatar_url)
+            }
+        });  	
+});
+$("#look_neckware").change(function() {
+  	var id = $(this).val();
+        $.ajax({
+            dataType: 'json',  // not jsonp
+            url: "http://localhost:3000/admin/accessories/" + id,
+            success: function(response) {
+                $('#shoes').attr('src',response.avatar_url)
+            }
+        });  	
+});
+
+</script>
+	
