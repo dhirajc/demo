@@ -14,6 +14,9 @@
         <div>
         <img id="neckwear"></img>
         </div>
+        <div id = "n_price">
+            Price
+        </div>
 	  </div>
 
 	  <div class="form-group">
@@ -22,6 +25,9 @@
     	<div>
     	<img id="shirts"></img>
     	</div>
+        <div id = "shirt_price">
+            Price
+        </div>
         </div>
 	 
 	  <div class="form-group">
@@ -30,7 +36,9 @@
     	<div>
     		<img id="shoes"></img>
     	</div>
-    	
+        <div id = "shoe_price">
+            Price
+        </div>
 	  </div>
 	  	<%#= f.hidden_field :product_id, :value => @product.id%>
 	  <%# binding.pry %>
@@ -43,33 +51,45 @@
 
 $("#look_shoes").change(function() {
   	var id = $(this).val();
+    if (id != null || id != ''){
         $.ajax({
             dataType: 'json',  // not jsonp
             url: "http://localhost:3000/admin/accessories/" + id,
             success: function(response) {
                 $('#shoes').attr('src',response.avatar_url)
+                $('#shoe_price').html(response.price)
             }
-        });  	
+
+
+        });
+    }
+ 	
 });
 $("#look_shirts").change(function() {
   	var id = $(this).val();
+    if (id != null || id != ''){
         $.ajax({
             dataType: 'json',  // not jsonp
             url: "http://localhost:3000/admin/accessories/" + id,
             success: function(response) {
                 $('#shirts').attr('src',response.avatar_url)
+                $('#shirt_price').html(response.price)
             }
-        });  	
+        });
+    }      	
 });
 $("#look_neckwear").change(function() {
   	var id = $(this).val();
+    if (id != null || id != ''){
         $.ajax({
             dataType: 'json',  // not jsonp
             url: "http://localhost:3000/admin/accessories/" + id,
             success: function(response) {
                 $('#neckwear').attr('src',response.avatar_url)
+                $('#n_price').html(response.price)
             }
-        });  	
+        });
+    }      	
 });
 
 </script>
