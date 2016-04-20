@@ -1,4 +1,13 @@
 
-<li><%= @product.name %></li>
-<li><%= @product.description%></li>
-<li><%= image_tag @product.avatar.url(:medium) %></li>
+<!-- <li><%= @product.name %></li>
+<li><%= @product.description%></li> -->
+  <div class="container">
+<p><h4><b>My Look:</b></h4></p>
+<table class="table">
+   <thead><th><p>Name: <%= @product.name %><br/></p></th></thead>
+   <thead><th><p>Neckwear: <%= @product.description %><br/></p></th></thead>
+  <div class="thumbnail">
+  <%= image_tag @product.avatar.url(:medium) %>
+    
+</table>
+</div>  

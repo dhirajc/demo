@@ -1,7 +1,8 @@
 class LooksController < ApplicationController
     
   def index
-    @looks = Look.all
+    #@looks = Look.all
+    @looks = Look.where(:user_id => current_user.id)
   end
 
   def new
@@ -32,10 +33,11 @@ class LooksController < ApplicationController
     @look = Look.find(params[:id])
     @look.destroy
     flash[:notice] = "look successfully destroyed"
-    redirect_to :back
+    redirect_to looks_path
   end
 
   def show
+    @look = Look.find(params[:id])
   end
 
   private 
