@@ -32,10 +32,11 @@ class LooksController < ApplicationController
     @look = Look.find(params[:id])
     @look.destroy
     flash[:notice] = "look successfully destroyed"
-    redirect_to :back
+    redirect_to looks_path
   end
 
   def show
+    @look = Look.find(params[:id])
   end
 
   private 

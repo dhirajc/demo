@@ -28,14 +28,15 @@ def create
 end
 
 def show
+  raise "hi"
   @accessory = Accessory.find(params[:id])
-  respond_to do |format|
-    format.html
+  # respond_to do |format|
+  #   format.html
 
-    format.json {render json: @accessory.to_json(:only => [ :id,:acc_name, :price, :product_id, :variant ], :methods => [:avatar_url]) }
+    #format.json {render json: @accessory.to_json(:only => [ :id,:acc_name, :price, :product_id, :variant ], :methods => [:avatar_url]) }
 
     #render :json => @model.to_json(:only => [:id,:name,:homephone,:cellphone])
-  end
+  #end
 end
 
 
@@ -56,7 +57,7 @@ def destroy
   @accessory = Accessory.find(params[:id])
   @accessory.destroy
   flash[:notice] = "Accessory successfully destroyed"
-  redirect_to admin_accessories_path
+  redirect_to :back
 end
  			
 private

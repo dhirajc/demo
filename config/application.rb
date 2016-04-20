@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Menguin
   class Application < Rails::Application
+    # require 'rack'
+    # require 'rack/cors'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,9 +23,16 @@ module Menguin
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+     config.active_record.raise_in_transactional_callbacks = false
     #### New added for custom error page 
-    config.exceptions_app = self.routes
+    #config.exceptions_app = self.routes
     ###
-  end
+
+  #   config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+  #     allow do
+  #     origins '*'
+  #     resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :options]
+  #     end
+  #   end
+   end
 end

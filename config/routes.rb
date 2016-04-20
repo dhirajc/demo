@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  get 'looks/new'
-
-  get 'looks/index'
-
-  get 'looks/create'
-
-  get 'looks/update'
-
-  get 'looks/show'
 
   namespace :admin do
   get 'dashboard/index'
@@ -15,7 +6,6 @@ Rails.application.routes.draw do
   resources :accessories 
   end
   resources :looks
-  get '/looks' => "looks#index"
   get '/products' => "products#index"
   get '/products/:id/show' => "products#show" , as: 'products_show'
   root 'dashboard#index' 
@@ -24,6 +14,12 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   get '/myaccount' => "users#myaccount"
+
+  namespace :api do
+    namespace :v1 do
+      resources :accessories
+    end
+  end
 ##### New added for custom error
 # unless Rails.env.test?
 #   get '404', :to => 'errors#page_not_found'

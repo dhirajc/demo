@@ -10,9 +10,9 @@
 	  <div class="form-group">
 	  	<%= f.label :neckwear %><br>
 	  	<%#binding.pry%>
-    	<%= f.select(:neckwear , Accessory.where("variant IN (?)", "neckwear").pluck(:acc_name,:id),{:prompt => 'Please select bow type'}) %>
+    	<%= f.select(:neckwear , Accessory.where("variant IN (?)", "neckwear").pluck(:acc_name,:id),{:prompt => 'Please select bow type'},class:'work') %>
         <div>
-        <img id="neckwear"></img>
+        <img id="img_neckwear"</img>
         </div>
         <div id = "n_price">
             Price
@@ -21,9 +21,9 @@
 
 	  <div class="form-group">
 	  	<%= f.label :shirts %><br>
-    	<%= f.select(:shirts,Accessory.where("variant IN (?)", "shirts").pluck(:acc_name,:id),{:prompt => 'Please select shirt type'}) %>
+    	<%= f.select(:shirts,Accessory.where("variant IN (?)", "shirts").pluck(:acc_name,:id),{:prompt => 'Please select shirt type'},class:'work') %>
     	<div>
-    	<img id="shirts"></img>
+    	<img id="img_shirts"></img>
     	</div>
         <div id = "shirt_price">
             Price
@@ -32,14 +32,19 @@
 	 
 	  <div class="form-group">
 	  	<%= f.label :shoes %><br>
-    	<%= f.select(:shoes, Accessory.where("variant IN (?)", "shoes").pluck(:acc_name,:id),{:prompt => 'Please select shoe type'}) %>
+    	<%= f.select(:shoes, Accessory.where("variant IN (?)", "shoes").pluck(:acc_name,:id),{:prompt => 'Please select shoe type'},class:'work') %>
     	<div>
-    		<img id="shoes"></img>
+    		<img id="img_shoes"></img>
     	</div>
         <div id = "shoe_price">
-            Price
+           
         </div>
 	  </div>
+
+      <div id = "total_price">
+        Total
+      </div>
+      
 	  	<%#= f.hidden_field :product_id, :value => @product.id%>
 	  <%# binding.pry %>
 	  	<%= f.submit 'Submit', class: 'btn btn-default' %>  	
@@ -47,17 +52,22 @@
 <%end%>
 
 <script>
-
-
-$("#look_shoes").change(function() {
+var total = 0;
+$(".work").change(function() {
   	var id = $(this).val();
+    
     if (id != null || id != ''){
         $.ajax({
+            // headers: { "Accept": "application/json"},
+            crossDomain: true,
             dataType: 'json',  // not jsonp
-            url: "http://localhost:3000/admin/accessories/" + id,
+            url: "http://localhost:3000/api/v1/accessories/" + id,
             success: function(response) {
-                $('#shoes').attr('src',response.avatar_url)
+                $('#img_'+response.variant).attr('src',response.avatar_url)
                 $('#shoe_price').html(response.price)
+                
+                total = total + (response.price || 0);
+                $('#total_price').html(total)
             }
 
 
@@ -65,32 +75,6 @@ $("#look_shoes").change(function() {
     }
  	
 });
-$("#look_shirts").change(function() {
-  	var id = $(this).val();
-    if (id != null || id != ''){
-        $.ajax({
-            dataType: 'json',  // not jsonp
-            url: "http://localhost:3000/admin/accessories/" + id,
-            success: function(response) {
-                $('#shirts').attr('src',response.avatar_url)
-                $('#shirt_price').html(response.price)
-            }
-        });
-    }      	
-});
-$("#look_neckwear").change(function() {
-  	var id = $(this).val();
-    if (id != null || id != ''){
-        $.ajax({
-            dataType: 'json',  // not jsonp
-            url: "http://localhost:3000/admin/accessories/" + id,
-            success: function(response) {
-                $('#neckwear').attr('src',response.avatar_url)
-                $('#n_price').html(response.price)
-            }
-        });
-    }      	
-});
-
+  
 </script>
 	
