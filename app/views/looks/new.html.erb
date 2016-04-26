@@ -14,7 +14,7 @@
         <div>
         <img id="img_neckwear"</img>
         </div>
-        <div id = "n_price">
+        <div id ="price_neckwear">
             Price
         </div>
 	  </div>
@@ -25,7 +25,7 @@
     	<div>
     	<img id="img_shirts"></img>
     	</div>
-        <div id = "shirt_price">
+        <div id = "price_shirts">
             Price
         </div>
         </div>
@@ -36,16 +36,18 @@
     	<div>
     		<img id="img_shoes"></img>
     	</div>
-        <div id = "shoe_price">
+        <div id = "price_shoes">
            
         </div>
 	  </div>
-
+ 
       <div id = "total_price">
-        Total
-      </div>
+
+      </div> 
+     <!--  <div class = <%#= "total_price" %>>
       
-	  	<%#= f.hidden_field :product_id, :value => @product.id%>
+      </div> -->
+      
 	  <%# binding.pry %>
 	  	<%= f.submit 'Submit', class: 'btn btn-default' %>  	
   </div>
@@ -64,17 +66,13 @@ $(".work").change(function() {
             url: "http://localhost:3000/api/v1/accessories/" + id,
             success: function(response) {
                 $('#img_'+response.variant).attr('src',response.avatar_url)
-                $('#shoe_price').html(response.price)
-                
+                $('#price_'+response.variant).html(response.price)
                 total = total + (response.price || 0);
                 $('#total_price').html(total)
             }
 
-
         });
     }
- 	
-});
-  
+});  
 </script>
 	

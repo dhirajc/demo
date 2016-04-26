@@ -28,7 +28,6 @@ def create
 end
 
 def show
-  raise "hi"
   @accessory = Accessory.find(params[:id])
   # respond_to do |format|
   #   format.html
