@@ -35,9 +35,14 @@
 <% @events.each do |e| %>
 <td><%= e.event_name %></td>
 <td><%= e.event_date %></td>
-<% if %>
-<td><%= link_to "Edit", edit_event_path(e) %></td>	
+<%# binding.pry%>
+<td>
+<% if (Date.today.strftime "%Y/%m/%d") < (e.event_date) %>
+<%= link_to "Edit", edit_event_path(e) %>
+<% else %>
+Cannot Edit 	
 <% end %>
+</td> 
 <td ><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Invite</button></td>
 </tr>
 <% end %>
