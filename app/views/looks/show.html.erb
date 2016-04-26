@@ -1,2 +1,34 @@
-<h1>Looks#show</h1>
-<p>Find me in app/views/looks/show.html.erb</p>
+ <%# raise @look.inspect %>
+ <div class="container">
+<p><h4><b>My Look:</b></h4></p>
+<table class="table">
+   <p>Look Name: <%= @look.name rescue "nil" %><br/></p>
+   <% @neckwear = Accessory.find(@look.neckwear) %>
+   <% @shirt = Accessory.find(@look.shirts)%>
+   <% @shoe = Accessory.find(@look.shoes)%>
+   
+   <p>Neckwear Name: <%= @neckwear.acc_name rescue "nil" %><br/>	   <!-- <div class="col-sm-6 col-md-4"> -->
+			<div class="thumbnail">
+			<%#= image_tag look.product.avatar.url(:thumb) %>
+
+			<%= image_tag @neckwear.acc_avatar.url(:thumb) %>
+		</div>
+</p>
+   <p>Shirt Name: <%= @shirt.acc_name rescue "nil" %><br/>
+   <!--  <div class="col-sm-6 col-md-4"> -->
+			<div class="thumbnail">
+			<%#= image_tag look.product.avatar.url(:thumb) %>
+			<%= image_tag @shirt.acc_avatar.url(:thumb) %>
+			</div>
+		</p>
+   <p>Shoe Name: <%= @shoe.acc_name rescue "nil" %><br/>
+    <!-- <div class="col-sm-6 col-md-4"> -->
+			<div class="thumbnail">
+			<%#= image_tag look.product.avatar.url(:thumb) %>
+			<%= image_tag @shoe.acc_avatar.url(:thumb) %>
+			</div>
+		</p>
+  
+</table>
+</div>  
+<%= link_to 'Looks', looks_path , :class => "btn btn-primary"%>

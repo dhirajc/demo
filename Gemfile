@@ -34,6 +34,7 @@ gem 'rack-cors', :require => 'rack/cors'
 group :development, :test do
 	gem 'sqlite3'
   gem 'byebug'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
 end
 
 group :development do
