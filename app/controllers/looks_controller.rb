@@ -13,6 +13,7 @@ class LooksController < ApplicationController
     #raise "hi"
     binding.pry
     @look = Look.new(looks_params)
+    binding.pry
     #@look.update_column(:user_id => current_user.id)
       if @look.save
         flash[:notice] = "look successfully created"
@@ -49,6 +50,6 @@ class LooksController < ApplicationController
   private 
    
    def looks_params
-    params.require(:look).permit(:name,:neckwear,:shirts,:shoes,:user_id,:product_id)
+    params.require(:look).permit(:name,:neckwear,:shirts,:shoes,:user_id,:product_id , :price)
    end
 end

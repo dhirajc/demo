@@ -20,6 +20,29 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def edit
+		@event = Event.find(params[:id])
+		@events = Event.where(:user_id => current_user.id)
+	end
+
+	def update
+		@event = Event.find(params[:id])
+			if @event.update_attributes(events_params)
+				flash[:notice] = 'Successfully updated'
+				redirect_to new_event_path
+			else
+				render 'edit'
+			end
+	end
+
+	def invite
+		@email1 = params[:email1]
+		@email2 = params[:email2]
+		#raise UserMailer.send_invite(@email1,@email2).inspect
+		UserMailer.send_invite(@email1,@email2).deliver
+		redirect_to :back
+	end
+
 	private
 
 	def events_params

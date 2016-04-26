@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   get '/myaccount' => "users#myaccount"
+  post '/invite' => "events#invite"
 
   namespace :api do
     namespace :v1 do
