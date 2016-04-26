@@ -36,8 +36,7 @@ def show
 
 		#render :json => @model.to_json(:only => [:id,:name,:homephone,:cellphone])
 	end
-end
-
+end			
 
 def edit
 	@accessory = Accessory.find(params[:id])

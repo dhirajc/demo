@@ -6,10 +6,12 @@ class LooksController < ApplicationController
   end
 
   def new
-    @looks = Look.new
+    @look = Look.new
   end
 
   def create
+    #raise "hi"
+    binding.pry
     @look = Look.new(looks_params)
     #@look.update_column(:user_id => current_user.id)
       if @look.save
@@ -19,11 +21,15 @@ class LooksController < ApplicationController
         render :action => 'new'
       end
     end
+    def edit
+      @look = Look.find(params[:id])
+    end
 
   def update
-    if @look.update(looks_params)
+  @look = Look.find(params[:id])
+    if @look.update_attributes(looks_params)
       flash[:notice] = 'Successfully updated'
-      redirect_to looks_new_path
+      redirect_to new_look_path
     else
       render 'edit'
     end

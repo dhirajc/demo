@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   get '/myaccount' => "users#myaccount"
+
+  namespace :api do
+    namespace :v1 do
+      resources :accessories
+    end
+  end
 ##### New added for custom error
 # unless Rails.env.test?
 #   get '404', :to => 'errors#page_not_found'
