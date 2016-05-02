@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   root 'dashboard#index' 
 
   devise_for :users
-  resources :users
+  resources :users do
+    resources :orders
+  end
   resources :events
   get '/myaccount' => "users#myaccount"
   post '/invite' => "events#invite"
@@ -21,6 +23,9 @@ Rails.application.routes.draw do
       resources :accessories
     end
   end
+
+  resources :carts
+  resources :cart_items
 ##### New added for custom error
 # unless Rails.env.test?
 #   get '404', :to => 'errors#page_not_found'

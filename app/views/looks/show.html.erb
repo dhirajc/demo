@@ -3,29 +3,29 @@
 <p><h4><b>My Look:</b></h4></p>
 <table class="table">
    <p>Look Name: <%= @look.name rescue "nil" %><br/></p>
-   <% @neckwear = Accessory.find(@look.neckwear) %>
-   <% @shirt = Accessory.find(@look.shirts)%>
-   <% @shoe = Accessory.find(@look.shoes)%>
+   <% @neckwear = Accessory.find(@look.neckwear) if @look.neckwear.present? %>
+   <% @shirt = Accessory.find(@look.shirts) if @look.shirts.present?%>
+   <% @shoe = Accessory.find(@look.shoes) if @look.shoes.present?%>
    
    <p>Neckwear Name: <%= @neckwear.acc_name rescue "nil" %><br/>	   <!-- <div class="col-sm-6 col-md-4"> -->
 			<div class="thumbnail">
 			<%#= image_tag look.product.avatar.url(:thumb) %>
 
-			<%= image_tag @neckwear.acc_avatar.url(:thumb) %>
+			<%= image_tag @neckwear.acc_avatar.url(:thumb) rescue nil %>
 		</div>
 </p>
    <p>Shirt Name: <%= @shirt.acc_name rescue "nil" %><br/>
    <!--  <div class="col-sm-6 col-md-4"> -->
 			<div class="thumbnail">
 			<%#= image_tag look.product.avatar.url(:thumb) %>
-			<%= image_tag @shirt.acc_avatar.url(:thumb) %>
+			<%= image_tag @shirt.acc_avatar.url(:thumb) rescue nil %>
 			</div>
 		</p>
    <p>Shoe Name: <%= @shoe.acc_name rescue "nil" %><br/>
     <!-- <div class="col-sm-6 col-md-4"> -->
 			<div class="thumbnail">
 			<%#= image_tag look.product.avatar.url(:thumb) %>
-			<%= image_tag @shoe.acc_avatar.url(:thumb) %>
+			<%= image_tag @shoe.acc_avatar.url(:thumb) rescue nil %>
 			</div>
 		</p>
   

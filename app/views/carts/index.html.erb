@@ -1,0 +1,40 @@
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+
+<div class="full-height scroll-bar">
+	<div class="pad-bottom">
+	<% if @ordered_looks.length == 0 %>
+		<p>Your cart is empty</p>
+	<% else %>
+	
+	<table class="hoverable">
+		<thead>
+ 			<tr style="background-color:#BCAAA4;"></tr>
+ 				<th data-field="id">S/N</th>
+ 				<th data-field="name">Name</th>
+ 				<th data-field="quantity">Quantity</th>
+ 				<th data-field="Total">Total</th>
+ 			</tr>
+		</thead>
+		<tbody>
+			<%# raise @ordered_looks.inspect %>
+		<% @ordered_looks.each do |index, details| %>
+			<% look_id = details[:look][:id] %>
+			<%# raise look_id.inspect %> 
+				<tr>
+					<td><%= index %></td>
+					<td id="look_name_<%= look_id%>"><%= details[:look]['name'] %></td>
+					<td id="look_qty_<%= look_id %>"><%= form_for 'quantity', :url => {:controller => 'cart_items', :action => 'update', look_id: details[:look][:id], id: index }, method: :patch do |f| %>
+						<%= f.number_field details[:qty], :min => 1, :value => details[:qty], :class => "qty qty-editable-width", "data-message" => look_id %>
+					 <% end %>
+					</td>
+
+
+					<% end %>
+					<td>
+						<%#= button_to cart_item_delete_path(details[:look][:id]), :class => "clear-button", method: :delete do %>
+						<i class="material-icons">clear</i>
+						<%# end %>
+					</td>
+				</tr>
+			</tbody>
+			<% end %>
