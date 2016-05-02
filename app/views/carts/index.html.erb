@@ -24,15 +24,21 @@
 					<td><%= index %></td>
 					<td id="look_name_<%= look_id%>"><%= details[:look]['name'] %></td>
 					<td id="look_qty_<%= look_id %>"><%= form_for 'quantity', :url => {:controller => 'cart_items', :action => 'update', look_id: details[:look][:id], id: index }, method: :patch do |f| %>
-						<%= f.number_field details[:qty], :min => 1, :value => details[:qty], :class => "qty qty-editable-width", "data-message" => look_id %>
+						<%= f.number_field details[:qty],  min: 1, :value =>  details[:quantity], :class => "qty qty-editable-width", "data-message" => look_id %>
 					 <% end %>
 					</td>
 
+					<td id="look_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
 
+					   <!-- details[:quantity] * (details[:look][:price].to_i)  -->
+
+
+					<!-- <td id="look_price_<%= look_id%>">"<%#= details[:look]['quantity'] * details[:look]['price'] %></td> -->
+					<%# binding.pry %>
 					<% end %>
 					<td>
 						<%#= button_to cart_item_delete_path(details[:look][:id]), :class => "clear-button", method: :delete do %>
-						<i class="material-icons">clear</i>
+						<!-- <i class="material-icons">clear</i> -->
 						<%# end %>
 					</td>
 				</tr>
