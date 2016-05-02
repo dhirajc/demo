@@ -67,7 +67,6 @@ $(".work").change(function() {
             success: function(response) {
                 $('#img_'+response.variant).attr('src',response.avatar_url)
                 $('#price_'+response.variant).html(response.price)
-                
                 total = total + (response.price || 0);
                 $('#total_price').html(total)
             }

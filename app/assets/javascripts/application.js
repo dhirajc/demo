@@ -17,7 +17,7 @@
 $(function (){
 	jQuery.noConflict();
 	$('#event_event_date').datepicker({
-      dateFormat: 'dd/mm/yy',
+      dateFormat: 'yy/mm/dd',
       changeMonth: true,
       changeYear: true,
       minDate: 0,
