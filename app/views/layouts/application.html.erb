@@ -18,41 +18,22 @@
 </head>
 <body>
 
-  <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to('My Events', new_event_path) %>
-    </li>
-    <li>
-      <%= link_to('My Account', myaccount_path) %>
-    </li>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-    </li>
-    <li class="cart-holder">
-      <%= link_to carts_path, class: "cart left no_left_pad", id: "cart"  do %>
-        <i class="material-icons left">Cart</i>&nbsp;(<%= cart_properties['items_count']  %>)
-          <% end %>  
-    </li>
-  <% else %>
-    <li>
-     <%= link_to('Login', new_user_session_path)  %>  
-    </li>
-  <% end %>
+<%= render 'shared/header'%>
 
-</ul>
-
-	 <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
 
 <div class="container">
 
 <%= yield %>
 
 </div>
+  <% unless flash.empty? %>
+    <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+         toastr['<%= type %>']('<%= f[1] %>');
+        <% end %>
+    </script>
+  <% end %> 
 </body>
 </html>
 

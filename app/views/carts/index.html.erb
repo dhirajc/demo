@@ -50,10 +50,14 @@
 
 
 <script type="text/javascript">
-$(document).on("click",".cart_quantity",function(){
-  fieldName = $(this).attr('field');
-  var a = $('.look_qty_'+fieldName).val();
-  var price = $('.unit_price_'+fieldName).text();
- $('.total_price_'+fieldName).text(price * a)
-});
+	
+(function($) {
+	$(document).on("click",".cart_quantity",function(){
+	  fieldName = $(this).attr('field');
+	  var a = $('.look_qty_'+fieldName).val();
+	  var price = $('.unit_price_'+fieldName).text();
+	 $('.total_price_'+fieldName).text(price * a)
+	});
+})(jQuery);
+
 </script>
