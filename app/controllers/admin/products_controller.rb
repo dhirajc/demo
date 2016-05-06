@@ -28,20 +28,21 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def update
-		@product = Product.find(params[:id])
- 			if @product.update_attributes(product_params)
- 				flash[:notice] = 'Successfully updated'
-      	redirect_to new_admin_product_path
-    	else
-      	render 'edit'
-    	end
+	@product = Product.find(params[:id])
+		if @product.update_attributes(product_params)
+			flash[:notice] = 'Successfully updated'
+  		redirect_to new_admin_product_path
+		else
+  		render 'edit'
+	end
+	
   end
 
 	def destroy
 		@product = Product.find(params[:id])
 		@product.destroy
-			flash[:notice] = "Product successfully destroyed"
-		redirect_to :back
+		flash[:notice] = "Product successfully destroyed"
+		redirect_to new_admin_product_path
 	end
 
  	private

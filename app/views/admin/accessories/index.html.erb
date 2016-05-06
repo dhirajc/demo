@@ -10,10 +10,13 @@
 <p>
 	<%= link_to 'Show',  admin_accessory_path(f) , :class => "btn btn-primary"%>
 	<%= link_to 'Edit', edit_admin_accessory_path(f), :class => "btn btn-primary" %>
-	<%= link_to 'Destroy', admin_accessory_path(f) ,:confirm => 'Are you sure?', :method => :delete , :class => "btn btn-default" %></td>
-                                        </p> 
+	<%= button_to 'Destroy',  admin_accessory_path(f), :method => :delete  , class: "btn btn-primary" ,   :confirm => 'Are you sure?' %> 
+                                        </p>
+                                         
 </div>
 </div>
 </div>
 <% end %>
 </div>
+<%= link_to 'New',   new_admin_accessory_path , :class => "btn btn-primary"%>
+
