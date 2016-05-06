@@ -14,6 +14,7 @@
  				<th data-field="quantity">Price</th>
  				<th data-field="quantity">Quantity</th>
  				<th data-field="Total">Total</th>
+ 				<th data-field="GTotal">Final</th>
  			</tr>
 		</thead>
 		<tbody>
@@ -34,23 +35,21 @@
 				</td>
 					<td class="total_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
 
-					   <!-- details[:quantity] * (details[:look][:price].to_i)  -->
-
-					<!-- <td id="look_price_<%= look_id%>">"<%#= details[:look]['quantity'] * details[:look]['price'] %></td> -->
-					<%# binding.pry %>
-					<% end %>
-					<td>
-						<%#= button_to cart_item_delete_path(details[:look][:id]), :class => "clear-button", method: :delete do %>
-						<!-- <i class="material-icons">clear</i> -->
-						<%# end %>
+					<td class="final_amount">
 					</td>
+
+					<td>
+					<%= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
+						<i class="glyphicon glyphicon-remove-sign"></i>
+						<% end %>
+					</td>
+					<% end %>		
 				</tr>
-			</tbody>
+			</tbody>            
 			<% end %>
 
 
 <script type="text/javascript">
-	
 (function($) {
 	$(document).on("click",".cart_quantity",function(){
 	  fieldName = $(this).attr('field');
@@ -61,3 +60,4 @@
 })(jQuery);
 
 </script>
+
