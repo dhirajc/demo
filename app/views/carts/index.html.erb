@@ -14,6 +14,7 @@
  				<th data-field="quantity">Price</th>
  				<th data-field="quantity">Quantity</th>
  				<th data-field="Total">Total</th>
+ 				<th data-field="GTotal">Final</th>
  			</tr>
 		</thead>
 		<tbody>
@@ -34,18 +35,17 @@
 				</td>
 					<td class="total_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
 
-					   <!-- details[:quantity] * (details[:look][:price].to_i)  -->
-
-					<!-- <td id="look_price_<%= look_id%>">"<%#= details[:look]['quantity'] * details[:look]['price'] %></td> -->
-					<%# binding.pry %>
-					<% end %>
-					<td>
-						<%#= button_to cart_item_delete_path(details[:look][:id]), :class => "clear-button", method: :delete do %>
-						<!-- <i class="material-icons">clear</i> -->
-						<%# end %>
+					<td class="final_amount">
 					</td>
+
+					<td>
+					<%= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
+						<i class="glyphicon glyphicon-remove-sign"></i>
+						<% end %>
+					</td>
+					<% end %>		
 				</tr>
-			</tbody>
+			</tbody>            
 			<% end %>
 
 
@@ -54,6 +54,15 @@ $(document).on("click",".cart_quantity",function(){
   fieldName = $(this).attr('field');
   var a = $('.look_qty_'+fieldName).val();
   var price = $('.unit_price_'+fieldName).text();
- $('.total_price_'+fieldName).text(price * a)
+  $('.total_price_'+fieldName).text(price * a);
+
+  // var b = 0;
+  // var c 
+  // c =$('.total_price_'+fieldName).text(price * a);
+  //  // b = $('.total_price_'+fieldName).text(price * a).each(function() {
+  //  // 	c = c + b;
+  //  	alert(c);
+// });
 });
 </script>
+
