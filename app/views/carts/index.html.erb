@@ -33,7 +33,7 @@
 					
 				 <% end %>
 				</td>
-					<td class="total_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
+					<td class="line_total" id="total_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
 
 					<td class="final_amount">
 					</td>
@@ -45,7 +45,19 @@
 					</td>
 					<% end %>		
 				</tr>
-			</tbody>            
+			</tbody>  
+	<tfoot>
+        <tr style="border-top:2px solid #3e2511">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Subtotal</td>
+          <td></td>
+          <td id="total">  N<%= @total%></td>
+        </tr>
+     </tfoot>
+    </table>          
 			<% end %>
 
 
@@ -54,10 +66,21 @@
 	$(document).on("click",".cart_quantity",function(){
 	  fieldName = $(this).attr('field');
 	  var a = $('.look_qty_'+fieldName).val();
-	  var price = $('.unit_price_'+fieldName).text();
-	 $('.total_price_'+fieldName).text(price * a)
-	});
-})(jQuery);
 
+	  var price = $('.unit_price_'+fieldName).text();
+	  
+	$('#total_price_'+fieldName).text(price * a)
+	var _total = calcTotal();
+	$("#total").text(_total);
+	});
+
+	var calcTotal = function() {
+    var _total = 0;
+    $('.line_total').each(function(){
+      _total += parseFloat($(this).text());
+    });
+    return _total;
+  }
+})(jQuery);
 </script>
 
