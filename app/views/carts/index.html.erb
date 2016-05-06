@@ -11,11 +11,13 @@
  			<tr style="background-color:#BCAAA4;"></tr>
  				<th data-field="id">S/N</th>
  				<th data-field="name">Name</th>
+ 				<th data-field="quantity">Price</th>
  				<th data-field="quantity">Quantity</th>
- 				<th data-field="total">Total</th>
+ 				<th data-field="Total">Total</th>
+ 				<th data-field="GTotal">Final</th>
  			</tr>
-		</thead>
-		<tbody>
+		   </thead>
+		  <tbody>
 			<%# raise @ordered_looks.inspect %>
 		<% @ordered_looks.each do |index, details| %>
 			<% look_id = details[:look][:id] %>
@@ -27,23 +29,34 @@
 						<%= f.number_field details[:qty],  min: 1, :value =>  details[:quantity], :class => "qty qty-editable-width", "data-message" => look_id , :class => "look_qty_#{look_id}" %>
 					 <% end %>
 					</td>
-                   
-					<td class="total_price_<%= look_id%>"><%= (details[:quantity]) * (details[:look][:price].to_i) %></td>
+             
+			<tr>
+				<td><%= index %></td>
+				<td id="look_name_<%= look_id%>"><%= details[:look]['name'] %>&nbsp;</td>
 
-					   <!-- details[:quantity] * (details[:look][:price].to_i)  -->
+				<td class="unit_price_<%= look_id%>"><%= details[:look][:price] %></td> 
 
+				<td id="look_qty_<%= look_id %>", field="<%= details[:look][:id] %>" class= "cart_quantity"><%= form_for 'quantity', :url => {:controller => 'cart_items', :action => 'update', look_id: details[:look][:id], id: index }, method: :patch do |f| %>
 
-					<!-- <td id="look_price_<%= look_id%>">"<%#= details[:look]['quantity'] * details[:look]['price'] %></td> -->
-					<%# binding.pry %>
-					<% end %>
-					<td>
-						<%#= button_to cart_item_delete_path(details[:look][:id]), :class => "clear-button", method: :delete do %>
-						<!-- <i class="material-icons">clear</i> -->
-						<%# end %>
+					<%= f.number_field details[:quantity],  min: 1, :value =>  details[:quantity], :class => "qty qty-editable-width", "data-message" => look_id , :class => "look_qty_#{look_id}" %>
+					
+				 <% end %>
+				</td>
+					<td class="total_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
+
+					<td class="final_amount">
 					</td>
+
+					<td>
+					<%= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
+						<i class="glyphicon glyphicon-remove-sign"></i>
+						<% end %>
+					</td>
+					<% end %>		
 				</tr>
-			</tbody>
+			</tbody>            
 			<% end %>
+
  <script>			
  $(document).on("click",".cart_quantity",function(){
  

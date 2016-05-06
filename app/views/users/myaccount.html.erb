@@ -4,7 +4,8 @@
    <thead><th><p>Name of User: <%= @user.name %><br/></p></th></thead>
    <thead><th><p>Contact Number: <%= @user.contact_no %><br/></p></th></thead>
    <thead><th><p> Email: <%= @user.email%><br/></p></th></thead>
-   <thead><th><p>Address: <%= @user.address%><br/></p></th></thead>
+   <thead><th><p>Address: <%= @user.address %><br/></p></th></thead>
     
 </table>
 </div>
+<%= link_to "Edit", edit_user_path(@user) %>

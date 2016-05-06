@@ -1,9 +1,5 @@
 class EventsController < ApplicationController
 
-	# def index
-	# 	@event = Event.where(:user_id => current_user.id)
-	# end
-
 	def new
 		@event = current_user.events.new
 		@events = Event.where(:user_id => current_user.id)
@@ -38,7 +34,6 @@ class EventsController < ApplicationController
 	def invite
 		@email1 = params[:email1]
 		@email2 = params[:email2]
-		#raise UserMailer.send_invite(@email1,@email2).inspect
 		UserMailer.send_invite(@email1,@email2).deliver
 		redirect_to :back
 	end

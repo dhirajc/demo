@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160505140301) do
+=======
+ActiveRecord::Schema.define(version: 20160505064838) do
+>>>>>>> 4797b81d0adbc65bff8e10ab0cca96563a4830ca
 
   create_table "accessories", force: :cascade do |t|
     t.string   "acc_name"
@@ -27,6 +31,13 @@ ActiveRecord::Schema.define(version: 20160505140301) do
   end
 
   add_index "accessories", ["product_id"], name: "index_accessories_on_product_id"
+
+  create_table "coupons", force: :cascade do |t|
+    t.string   "coupon_code"
+    t.string   "percent"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "event_name"

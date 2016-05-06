@@ -12,8 +12,6 @@ class LooksController < ApplicationController
   def create
 
     @look = Look.new(looks_params)
-
-    
     if (params[:look][:neckwear]).present?
       n_price = (Accessory.find(params[:look][:neckwear] ).price )
     else
