@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'fittings/index'
+
   namespace :admin do
   get 'dashboard/index'
   resources :products , except: [:show , :index]  
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   get '/products' => "products#index"
   get '/products/:id/show' => "products#show" , as: 'products_show'
   root 'dashboard#index' 
-
+  
   devise_for :users
   resources :users do
     resources :orders
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
       resources :accessories
     end
   end
-
+  resources :fittings
   resources :carts
   resources :cart_items
 ##### New added for custom error

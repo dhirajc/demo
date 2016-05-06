@@ -42,12 +42,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :address   => "smtp.mandrillapp.com",
+    :address   => "smtp.sendgrid.net",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => "bodharthlonkar@gmail.com",
-    :password  => "RVjgrRpu9J17FzAyH5kvZA", # SMTP password is any valid API key
+    :user_name => "blonkar@delaplex.in",
+    :password  => "Blonkar@88", # SMTP password is any valid API key
     :authentication => 'plain', # Mandrill supports 'plain' or 'login'
-    :domain => 'gmail.com'
+    :domain => 'sendgrid.net'
     } # your domain to identify your server when connecting
 end

@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
   has_many :looks
   has_many :events
 
-  has_many :orders, dependent: :destroy          
+  has_many :orders, dependent: :destroy
+  has_many :get_fitteds ,through: :looks          
 end

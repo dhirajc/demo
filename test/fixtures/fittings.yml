@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  height: 1
+  pant_size: 1
+  shrit_size: 1
+  weight: 1
+  shoe_size: MyString
+  integer: MyString
+
+two:
+  height: 1
+  pant_size: 1
+  shrit_size: 1
+  weight: 1
+  shoe_size: MyString
+  integer: MyString

@@ -2,6 +2,7 @@
 <%#= raise @looks.inspect %>
 	<% @looks.each do |look| %>
 	<%# raise look.product_id.inspect %>
+	<%#binding.pry%>
 	<% @p =  Product.find(look.product_id) %>
 	<%#= raise @p.inspect %>
 <div class="col-sm-6 col-md-4">
@@ -34,3 +35,4 @@
 <% end %>
 </div>
 <%= link_to 'Customize Products', products_path %>
+
