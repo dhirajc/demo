@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require toastr
 //= require turbolinks
 //= require_tree .
+
 $(function (){
 	jQuery.noConflict();
 	$('#event_event_date').datepicker({
