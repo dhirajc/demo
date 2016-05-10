@@ -15,7 +15,7 @@
         <img id="img_neckwear"</img>
         </div>
         <div id ="price_neckwear">
-            Price
+            0
         </div>
       </div>
 
@@ -26,7 +26,7 @@
         <img id="img_shirts"></img>
         </div>
         <div id = "price_shirts">
-            Price
+            0
         </div>
         </div>
      
@@ -37,13 +37,12 @@
             <img id="img_shoes"></img>
         </div>
         <div id = "price_shoes">
-           
+           0
         </div>
       </div>
 
-      <div id = "total_price">
-         Total
-        <%#= f.hidden_field :price %>
+      <div id = "total_price">  
+      0
       </div>
       
         <%= f.hidden_field :product_id, :value => params[:product_id] %>
@@ -54,11 +53,12 @@
 <%end%>
 
 <script>
-var total = 0;
+
 $(".work").change(function() {
+
     var id = $(this).val();
-    
-    if (id != null || id != ''){
+    var total = 0;
+    if (id){
         $.ajax({
             // headers: { "Accept": "application/json"},
             crossDomain: true,
@@ -69,6 +69,8 @@ $(".work").change(function() {
                 $('#price_'+response.variant).html(response.price)
                 total = total + (response.price || 0);
                 $('#total_price').html(total)
+                calculateTotal();
+
             }
 
 
@@ -76,4 +78,11 @@ $(".work").change(function() {
     }
     
 });  
+function calculateTotal(){
+    var a =parseFloat($('#price_shirts').text()); 
+    var b =parseFloat($('#price_shoes').text());
+    var c =parseFloat($('#price_neckwear').text());
+    var  d = a + b + c;
+    $('#total_price').html(d)
+}
 </script>

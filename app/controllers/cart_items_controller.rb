@@ -3,7 +3,10 @@ class CartItemsController < ApplicationController
 	def create
 		@cart.increment(params[:look_id])
 		session[:cart] = @cart.cart_data
-		redirect_to looks_path
+		respond_to do |format|
+			format.html	
+			format.js
+		end
 	end
 
 	def destroy

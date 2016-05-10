@@ -1,26 +1,25 @@
-  <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to('My Events', new_event_path) %>
-    </li>
-    <li>
-      <%= link_to('My Account', myaccount_path) %>
-    </li>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-    </li>
-    <li class="cart-holder">
-      <%= link_to carts_path, class: "cart left no_left_pad", id: "cart"  do %>
-        <i class="material-icons left">Cart</i>&nbsp;(<%= cart_properties['items_count']  %>)
-          <% end %>  
-    </li>
-  <% else %>
-    <li>
-     <%= link_to('Login', new_user_session_path)  %>  
-    </li>
-  <% end %>
-
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to('My Events', new_event_path) %>
+      </li>
+      <li>
+        <%= link_to('My Account', myaccount_path) %>
+      </li>
+      <li>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+      </li>
+      <li class="cart-holder" id="carts">
+        <%= link_to carts_path, class: "cart left no_left_pad", id: "cart"  do %>
+          <i class="material-icons left">Cart</i>&nbsp;<span id="item_cart">(<%= cart_properties['items_count']  %>)</span>
+            <% end %>  
+      </li>
+    <% else %>
+      <li>
+       <%= link_to('Login', new_user_session_path)  %>  
+      </li>
+    <% end %>
 </ul>
