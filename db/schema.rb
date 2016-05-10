@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505064838) do
+ActiveRecord::Schema.define(version: 20160505140301) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "acc_name"
@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 20160505064838) do
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
+
+  create_table "fittings", force: :cascade do |t|
+    t.integer  "height"
+    t.integer  "pant_size"
+    t.integer  "shrit_size"
+    t.integer  "weight"
+    t.string   "shoe_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "look_id"
+    t.integer  "user_id"
+  end
 
   create_table "looks", force: :cascade do |t|
     t.string   "name"
