@@ -14,7 +14,13 @@
 <p>
 
 	<%= link_to 'Show',  look_path(look) , :class => "btn btn-primary"%>
-	<%= link_to 'Edit', edit_look_path(look), :class => "btn btn-primary" %>
+	<%#= link_to 'Edit', edit_look_path(look), :class => "btn btn-primary" %>
+	<%= link_to 'Edit',  { :controller => "looks", 
+                                       :action => "edit",
+                                       :id => look, 
+                                       :product_id => look.product_id, 
+                                        } ,  :class => "btn btn-default" %>
+                                        
 	<%= link_to 'Delete',look_path(look), method: :delete, data: { confirm: 'Are you sure you want to delete this alert?' }, :class => "btn btn-default" %>
 
 		<div class="card-action">

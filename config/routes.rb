@@ -26,6 +26,11 @@ Rails.application.routes.draw do
 
   resources :carts
   resources :cart_items
+  post "checkout" => "checkout#show", as: :checkout
+  post "carts/checkout" => "carts#checkout", as: :cart_checkout
+  post "payment" => "checkout#create", as: :payment
+
+  post "/payment/processed" => "checkout#create", as: :payment_completed
 ##### New added for custom error
 # unless Rails.env.test?
 #   get '404', :to => 'errors#page_not_found'

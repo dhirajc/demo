@@ -28,12 +28,26 @@ class Current_Order
 	end
 
 	def paypal_url(current_user, return_url)
-		@user = current_user
-		values = {
 
-			
-		}
-		
+		# @user = current_user
+		# values = {
+		# 	:business => 'dchachada-facilitator@delaplex.in',
+		# 	:cmd => '-cart',
+		# 	:upload => 1,
+		# 	:rm => 2,
+		# 	:return => return_url,
+		# 	:notify_url => @user.email,			
+		# }
+		# counter = 1
+		# @ordered_items.each do |index, details|
+		# 	values.merge!({
+		# 		"amount_#{counter}" => details['look']['price'],
+		# 		"item_name_#{counter}" => details['look']['name'],
+		# 		"quantity_#{counter}" => details["qty"]
+		# 		})
+		# 		counter += 1
+		# 	end
+			"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
 	end
 
 end

@@ -57,9 +57,10 @@
           <td id="total">  N<%= @total%></td>
         </tr>
      </tfoot>
-    </table>          
+    </table>
+     <%= button_to 'Checkout', checkout_path, :class => "btn" %>       
 			<% end %>
-
+<%#= button_to 'Checkout' ,{:controller => "checkout", :action => "show", :method => 'post' %>
 
 <script type="text/javascript">
 (function($) {
