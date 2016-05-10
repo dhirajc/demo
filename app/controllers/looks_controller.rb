@@ -39,6 +39,7 @@ class LooksController < ApplicationController
     end
 
     def edit
+      #raise params.inspect
       @look = Look.find(params[:id])
     end
 
