@@ -29,7 +29,7 @@
     		<% link_to "#{this_look_in_cart(look)}", carts_path, class: "cart left no_left_pad no-right-margin", id: "cart" %>
     	</div>
       	<%# if food.status == "available" %>
-       		<%= button_to "Add to cart", cart_items_path(look_id: look.id) %>
+       		<%= button_to "Add to cart", cart_items_path(look_id: look.id),:remote => true %>
        		<%#= link_to 'Get fitted',new_fitting_path%>
        		<%= link_to "Get fitted", :controller => "fittings",:action => "new", :look_id => look.id %>
         <%# else %>
