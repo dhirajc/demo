@@ -10,7 +10,7 @@ class Current_Order
 		# @delivery_cost = 500
 		@sub_total = current_order["details"]["sub_total"].to_i || 0
 		@user = {}
-		@invoice = " "
+		@invoice = ""
 		@transaction_id = ""
 		@status = "pending"
 	end
@@ -31,7 +31,7 @@ class Current_Order
 		@user = current_user
 		values = {
 			:business => 'dchachada-facilitator@delaplex.in',
-			:cmd => '-cart',
+			:cmd => '_cart',
 			:upload => 1,
 			:rm => 2,
 			:return => return_url,
