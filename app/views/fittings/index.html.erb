@@ -1,2 +1,35 @@
-<h1>Fittings#index</h1>
-<p>Find me in app/views/fittings/index.html.erb</p>
+
+<h1> Fittings</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Height(cm)</th>
+      <th>Shirt Size(cm)</th>
+      <th>Weight(kg)</th>
+      <th>Shoe size(cm)</th>
+      <th>Pant size(cm)</th>
+      <th>Look name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fittings.each do |fitting| %>
+    <% l = Look.find(fitting.look_id) %>
+    <%# raise @fittings.inspect %>
+      <tr>
+        <td><%= fitting.height %></td>
+        <td><%= fitting.shrit_size %></td>
+        <td><%= fitting.weight%></td>
+        <td><%= fitting.shoe_size %></td>
+        <td><%= fitting.pant_size %></td>
+        <td><%= l.name.capitalize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Fitting', new_fitting_path %>
+<%= link_to 'Looks', looks_path , :class => "btn btn-primary"%>

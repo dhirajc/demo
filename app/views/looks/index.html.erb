@@ -24,6 +24,8 @@
     	</div>
       	<%# if food.status == "available" %>
        		<%= button_to "Add to cart", cart_items_path(look_id: look.id) %>
+       		<%#= link_to 'Get fitted',new_fitting_path%>
+       		<%= link_to "Get fitted", :controller => "fittings",:action => "new", :look_id => look.id %>
         <%# else %>
          	<!-- <p>Out of stock</p> -->
             <%# end %>
@@ -34,5 +36,5 @@
 </div>
 <% end %>
 </div>
-<%= link_to 'Customize Products', products_path %>
+<li><%= link_to 'Customize Products', products_path %></li>
 

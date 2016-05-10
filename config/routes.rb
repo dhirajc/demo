@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'fittings/index'
 
   namespace :admin do
   get 'dashboard/index'
