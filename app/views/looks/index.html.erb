@@ -20,18 +20,18 @@
                                        :action => "edit",
                                        :id => look, 
                                        :product_id => look.product_id, 
-                                        } ,  :class => "btn btn-default" %>
+                                        } ,  :class => "btn btn-primary" %>
                                         
-	<%= link_to 'Delete',look_path(look), method: :delete, data: { confirm: 'Are you sure you want to delete this alert?' }, :class => "btn btn-default" %>
+	<%= link_to 'Delete',look_path(look), method: :delete, data: { confirm: 'Are you sure you want to delete this alert?' }, :class => "btn btn-primary" %>
 
 		<div class="card-action">
     	<div class="right"><!-- <i class="material-icons left no-right-margin">shopping_cart</i> -->
     		<% link_to "#{this_look_in_cart(look)}", carts_path, class: "cart left no_left_pad no-right-margin", id: "cart" %>
     	</div>
       	<%# if food.status == "available" %>
-       		<%= button_to "Add to cart", cart_items_path(look_id: look.id) %>
+       		<%= button_to "Add to cart", cart_items_path(look_id: look.id),:class => "btn btn-success" %>
        		<%#= link_to 'Get fitted',new_fitting_path%>
-       		<%= link_to "Get fitted", :controller => "fittings",:action => "new", :look_id => look.id %>
+       		<h6><%= link_to "Get fitted", :controller => "fittings",:action => "new", :look_id => look.id %></h6>
         <%# else %>
          	<!-- <p>Out of stock</p> -->
             <%# end %>
@@ -42,5 +42,5 @@
 </div>
 <% end %>
 </div>
-<li><%= link_to 'Customize Products', products_path %></li>
+<li><%= link_to 'Customize Products', root_path %></li>
 

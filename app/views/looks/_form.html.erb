@@ -12,6 +12,7 @@
         <%#binding.pry%>
         <%= f.select(:neckwear , Accessory.where("variant IN (?)", "neckwear").pluck(:acc_name,:id),{:prompt => 'Please select bow type'},class:'work') %>
         <div>
+        <br />
         <img id="img_neckwear"</img>
         </div>
         <div id ="price_neckwear">
@@ -23,6 +24,7 @@
         <%= f.label :shirts %><br>
         <%= f.select(:shirts,Accessory.where("variant IN (?)", "shirts").pluck(:acc_name,:id),{:prompt => 'Please select shirt type'},class:'work') %>
         <div>
+        <br />
         <img id="img_shirts"></img>
         </div>
         <div id = "price_shirts">
@@ -34,6 +36,7 @@
         <%= f.label :shoes %><br>
         <%= f.select(:shoes, Accessory.where("variant IN (?)", "shoes").pluck(:acc_name,:id),{:prompt => 'Please select shoe type'},class:'work') %>
         <div>
+        <br />
             <img id="img_shoes"></img>
         </div>
         <div id = "price_shoes">
@@ -48,7 +51,7 @@
       
         <%= f.hidden_field :product_id, :value => params[:product_id] %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-     
+     <hr>
         <%= f.submit 'Submit', class: 'btn btn-default' %>      
   </div>
 <%end%>
@@ -68,7 +71,7 @@ $(".work").change(function() {
                 $('#img_'+response.variant).attr('src',response.avatar_url)
                 $('#price_'+response.variant).html(response.price)
                 total = total + (response.price || 0);
-                $('#total_price').html(total)
+                $('#total_price').html("Total: " +total)
             }
 
 

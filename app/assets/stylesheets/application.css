@@ -12,7 +12,13 @@
  *
  *= require_tree .
  *= require toastr
+ *= require font-awesome
  *= require_self
  */
-/*  body { background: #C0C0C0; }
+ /* body { background: #C0C0C0; }
 */
+.header_top { min-height: 38px; background-color: #000000; }
+ 
+/*.header-middle { min-height: 38px; background: #C0C0C0;}*/
+
+/*.footer-top { background: #C0C0C0;}*/
