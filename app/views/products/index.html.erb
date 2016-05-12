@@ -1,22 +1,32 @@
-<div class="row">
-	<% @products.each do |p| %>
-<div class="col-sm-6 col-md-4">
-<div class="thumbnail">
-<%= image_tag p.avatar.url(:thumb) %>
-<div class="caption">
-<h3><%= p.name %></h3>
-<p><%= p.description%></p>
-<p>
-<%= link_to 'Show',  products_show_path(p) , :class => "btn btn-primary"%>
-<%= link_to 'Customize',  { :controller => "looks", 
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Tuxedos</h2>
+						<% @products.each do |p| %>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+										<div class="productinfo text-center">
+												<%= link_to products_show_path(p) do %>
+    											<%= image_tag p.avatar.url(:medium) %>
+												<% end %>
+											<!-- <h2>$56</h2> -->
+											<h2><%= p.name.capitalize %></h2>
+											<%= link_to 'Customize', { :controller => "looks", 
                                        :action => "new", 
                                        :product_id => p.id, 
-                                        } ,  :class => "btn btn-default" %>
-                                        </p> 
-</div>
-</div>
-</div>
-<% end %>
-</div>
+                                        } ,  :class => "btn btn-default add-to-cart" %>
+										</div>
+								</div>
+							</div>
+						</div>
+						<%end%>						
+					</div><!--features_items-->			
+				</div>
+			</div>
+		</div>
+	</section>
 
 
