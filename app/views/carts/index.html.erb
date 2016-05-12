@@ -69,7 +69,7 @@
  -->
 
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+
 
 
  <section id="cart_items">
@@ -92,7 +92,7 @@
 							<td class="price"data-field="price">Price</td>
 							<td class="quantity"data-field="quantity">Quantity</td>
 							<td class="total"data-field="total">Total</td>
-							<td class="Gtotal"data-field="Gtotal">GTotal</td>
+							<td ></td>
 							<td></td>
 
 						</tr>
@@ -119,10 +119,11 @@
 							<td class="cart_total_price" id="total_price_<%= look_id%>">
 								<p class="cart_total_price"><%= details[:quantity] * (details[:look][:price].to_i) %></p>
 							</td>
-							<td>
-					   <%= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
-						  <i class="glyphicon glyphicon-remove-sign"></i>
+							<td class="cart_delete">
+					   <%= button_to cart_path(look_id) , :class => "cart_quantity_delete", method: :delete do %>
+						  <i class="fa fa-times"></i>
 						<% end %>
+
 					  </td>
 						</tr>
 						<%end%>
