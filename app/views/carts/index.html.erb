@@ -1,11 +1,11 @@
+ 
+<%#= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
-
-<div class="full-height scroll-bar">
+<!-- <div class="full-height scroll-bar">
 	<div class="pad-bottom">
-	<% if @ordered_looks.length == 0 %>
+	<%# if @ordered_looks.length == 0 %>
 		<p>Your cart is empty</p>
-	<% else %>
+	<%## else %>
 	
 	<table class="hoverable">
 		<thead>
@@ -20,31 +20,32 @@
 		</thead>
 		<tbody>
 			<%# raise @ordered_looks.inspect %>
-		<% @ordered_looks.each do |index, details| %>
-			<% look_id = details[:look][:id] %>
+		<%# @ordered_looks.each do |index, details| %>
+			<%# look_id = details[:look][:id] %>
 			<tr>
-				<td><%= index %></td>
-				<td id="look_name_<%= look_id%>"><%= details[:look]['name'] %>&nbsp;</td>
+				<td><%#= index %></td>
+				<td id="look_name_<%#= look_id%>"><%#= details[:look]['name'] %>&nbsp;</td>
 
-				<td class="unit_price_<%= look_id%>"><%= details[:look][:price] %></td> 
+				<td class="unit_price_<%#= look_id%>"><%#= details[:look][:price] %></td> 
 
-				<td id="look_qty_<%= look_id %>", field="<%= details[:look][:id] %>" class= "cart_quantity"><%= form_for 'quantity', :url => {:controller => 'cart_items', :action => 'update', look_id: details[:look][:id], id: index }, method: :patch do |f| %>
+				<td id="look_qty_<%#= look_id %>", field="<%#= details[:look][:id] %>" class= "cart_quantity"><%#= form_for 'quantity', :url => {:controller => 'cart_items', :action => 'update', look_id: details[:look][:id], id: index }, method: :patch do |f| %>
 
-					<%= f.number_field details[:quantity],  min: 1, :value =>  details[:quantity], :class => "qty qty-editable-width", "data-message" => look_id , :class => "look_qty_#{look_id}" %>
+					<%#= f.number_field details[:quantity],  min: 1, :value =>  details[:quantity], :class => "qty qty-editable-width", "data-message" => look_id , :class => "look_qty_#{look_id}" %>
 					
-				 <% end %>
+				 <%# end %>
 				</td>
-					<td class="line_total" id="total_price_<%= look_id%>"><%= details[:quantity] * (details[:look][:price].to_i) %></td>
+					<td class="line_total" id="total_price_<%#=
+ look_id%>"><%#= details[:quantity] * (details[:look][:price].to_i) %></td>
 
 					<td class="final_amount">
 					</td>
 
 					<td>
-					<%= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
+					<%#= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
 						<i class="glyphicon glyphicon-remove-sign"></i>
-						<% end %>
+						<%# end %>
 					</td>
-					<% end %>		
+					<%# end %>		
 				</tr>
 			</tbody>  
 	<tfoot>
@@ -55,15 +56,96 @@
           <td></td>
           <td>Subtotal</td>
           <td></td>
-          <td id="total">  N<%= @total%></td>
+          <td id="total">  N<%#=
+ @total%></td>
         </tr>
      </tfoot>
     </table>
-     <%= button_to 'Checkout', checkout_path, :class => "btn" %>       
-			<% end %>
+     <%#= button_to 'Checkout', checkout_path, :class => "btn" %>       
+			<%# end %>
 <%#= button_to 'Checkout' ,{:controller => "checkout", :action => "show", :method => 'post' %>
 
-<script type="text/javascript">
+
+ -->
+
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+
+
+ <section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Home</a></li>
+				  <li class="active">Shopping Cart</li>
+				</ol>
+			</div>
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<% if @ordered_looks.length == 0 %>
+						  <p>Your cart is empty</p>
+						<% else %>	
+					<thead>
+						<tr class="cart_menu">
+
+							<td class="name"data-field="name"> Name</td>
+							<td class="price"data-field="price">Price</td>
+							<td class="quantity"data-field="quantity">Quantity</td>
+							<td class="total"data-field="total">Total</td>
+							<td class="Gtotal"data-field="Gtotal">GTotal</td>
+							<td></td>
+
+						</tr>
+					</thead>
+					<tbody>
+					  <% @ordered_looks.each do |index, details| %>
+								<% look_id = details[:look][:id] %>
+						<tr>
+
+							<td class="cart_description" id="look_name_<%= look_id%>">
+								<h4><a href=""><%= details[:look]['name'] %></a></h4>
+								<!-- <p>Web ID: 1089772</p> -->
+							</td>
+							<td class="cart_price unit_price_<%= look_id%>">
+								<p><%= details[:look][:price] %></p>
+							</td>
+							<td class="cart_quantity" id="look_qty_<%= look_id %>", field="<%= details[:look][:id] %>">
+							<%= form_for 'quantity', :url => {:controller => 'cart_items', :action => 'update', look_id: details[:look][:id], id: index }, method: :patch do |f| %>
+
+								<%= f.number_field details[:quantity],  min: 1, :value =>  details[:quantity], :class => "qty qty-editable-width", "data-message" => look_id , :class => "look_qty_#{look_id}" %>
+
+							<% end %>
+							</td>
+							<td class="cart_total_price" id="total_price_<%= look_id%>">
+								<p class="cart_total_price"><%= details[:quantity] * (details[:look][:price].to_i) %></p>
+							</td>
+							<td>
+					   <%= button_to cart_path(look_id) , :class => "clear-button", method: :delete do %>
+						  <i class="glyphicon glyphicon-remove-sign"></i>
+						<% end %>
+					  </td>
+						</tr>
+						<%end%>
+					<!-- <tfoot>
+          <tr style="border-top:2px solid #3e2511">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Subtotal</td>
+          <td></td>
+          <td id="total">  N<%=@total%></td>												
+          </tr>
+          </tfoot> -->
+					</tbody>
+					<%end%>
+				</table>
+			</div>
+		  <%= button_to 'Checkout' ,{:controller => "checkout", :action => "show", :method => 'post'} %>
+		</div>
+	</section> 
+
+	<script type="text/javascript">
 (function($) {
 	$(document).on("click",".cart_quantity",function(){
 	  fieldName = $(this).attr('field');
@@ -85,5 +167,3 @@
   }
 })(jQuery);
 </script>
-
-
