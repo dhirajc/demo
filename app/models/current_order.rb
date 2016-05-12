@@ -49,4 +49,10 @@ class Current_Order
 			"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
 	end
 
+	def save_order(current_user)
+		user = current_user
+		new_order = user.orders.new(total: @total, invoice: @invoice)
+		raise new_order.inspect
+	end
+
 end
