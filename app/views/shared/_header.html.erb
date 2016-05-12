@@ -91,7 +91,7 @@
                 <!-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li> -->
                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                 <li><%= link_to carts_path, class: "cart left no_left_pad", id: "cart"  do %>
-        <i class="fa fa-shopping-cart"> Cart</i>&nbsp;(<%= cart_properties['items_count']  %>)</li>
+          <i class="fa fa-shopping-cart"> Cart</i>&nbsp;(<span id="item_cart"><%= cart_properties['items_count']  %></span>)</li>
 
           <% end %> 
                 <li><%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-lock"> Logout</i><% end %></li> 
