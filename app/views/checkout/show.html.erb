@@ -3,7 +3,6 @@
 		<h3>Confirm your order</h3>
 		<% if @current_order.ordered_items.length == 0 %>
 			<p>Your cart is still empty</p>
-			<% raise "if" %>
 		<% else %>
 			<%= render "orders/current_order" %>
 			 <div>

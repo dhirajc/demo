@@ -13,15 +13,15 @@
 	<%# binding.pry %>
 	<% @a = 0 %>
 	<% @current_order.ordered_items.each do |index, details| %>
-	
+	<%# binding.pry%>
 	<% @item_total_price = details['look']['price'] * details['quantity']
 		%>
 		<tr>
 			<!-- <td><%#= index %></td> -->
 			<td><%= details['look']['name']%></td>
 			<td><%= details['look']['price']%></td>
-			<% @look_price = details['look']['price'].to_i * details['quantity'] %>
-			<td><%= details['quantity']%></td>
+			<% @look_price = details['look']['price'].to_i * details['qty'] %>
+			<td><%= details['qty'] %></td>
 			<td><%= @look_price %></td>
 			<% @a = @look_price + @a %>
 		</tr>

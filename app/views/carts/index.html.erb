@@ -94,6 +94,8 @@
 							<td class="total"data-field="total">Total</td>
 							<td ></td>
 							<td></td>
+							<td ></td>
+							<td></td>
 
 						</tr>
 					</thead>
@@ -127,17 +129,17 @@
 					  </td>
 						</tr>
 						<%end%>
-					<!-- <tfoot>
-          <tr style="border-top:2px solid #3e2511">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>Subtotal</td>
-          <td></td>
-          <td id="total">  N<%=@total%></td>												
-          </tr>
-          </tfoot> -->
+						<tfoot>
+	          	<tr style="border-top:2px solid #3e2511">
+		          <td></td>
+		          <td></td>
+		          <td></td>
+		          <td></td>
+		          <td>Subtotal</td>
+		          <td></td>
+		          <td id="total">  N<%=@total%></td>												
+	          </tr>
+	          </tfoot>
 					</tbody>
 					<%end%>
 				</table>
@@ -153,15 +155,35 @@
 	  var a = $('.look_qty_'+fieldName).val();
 
 	  var price = $('.unit_price_'+fieldName).text();
-	  
+	  var _total1 = calcTotal();
+    var params = {
+        cart_items: {
+          look_id: fieldName,
+          quantity: a
+        },
+        order_details: {
+          total: _total1
+        }
+      };
+
 	$('#total_price_'+fieldName).text(price * a)
 	var _total = calcTotal();
 	$("#total").text(_total);
+	$.ajax({
+		data: params,
+		url:"/cart_items/"+'1',
+		type : 'PATCH',
+      success: function(data){
+      	console.log(data)
+      },
+
+	});
+
 	});
 
 	var calcTotal = function() {
     var _total = 0;
-    $('.line_total').each(function(){
+    $('.cart_total_price').each(function(){
       _total += parseFloat($(this).text());
     });
     return _total;

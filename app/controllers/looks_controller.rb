@@ -1,7 +1,13 @@
 class LooksController < ApplicationController
-    
+
+before_filter :authorize_user
+  
+  def authorize_user
+    return unless !current_user.present?
+      redirect_to new_user_session_path, alert: 'Please sign in to create your look'
+  end
+
   def index
-    #@looks = Look.all
     @looks = Look.where(:user_id => current_user.id)
   end
 
