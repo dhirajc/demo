@@ -38,6 +38,7 @@ class Current_Order
 			:notify_url => @user.email,			
 		}
 		counter = 1
+		
 		@ordered_items.each do |index, details|
 			values.merge!({
 				"amount_#{counter}" => details['look']['price'],
@@ -52,7 +53,7 @@ class Current_Order
 	def save_order(current_user)
 		user = current_user
 		new_order = user.orders.new(total: @total, invoice: @invoice)
-		raise new_order.inspect
+		# raise new_order.inspect
 	end
 
 end

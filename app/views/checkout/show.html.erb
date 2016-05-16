@@ -4,6 +4,7 @@
 		<% if @current_order.ordered_items.length == 0 %>
 			<p>Your cart is still empty</p>
 		<% else %>
+		
 			<%= render "orders/current_order" %>
 			 <div>
 				<%= link_to "Back to my cart", carts_path, :class => "btn btn-success in-line left" %>
