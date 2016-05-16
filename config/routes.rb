@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   namespace :admin do
   get 'dashboard/index'
   resources :products , except: [:show , :index]  
-  resources :accessories 
+  resources :accessories
+  resources :events 
   end
   resources :looks
   # get '/products' => "products#index"

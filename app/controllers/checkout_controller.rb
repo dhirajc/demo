@@ -10,7 +10,6 @@ protect_from_forgery :except => [:create]
 	end
 
 	def create
-		raise "hi"
 		if order_params[:status].downcase === "completed"
 			@current_order.update_order(session[:order], order_params)
 			if @current_order.save_order(@current_user)

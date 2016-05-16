@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Menguin</title>
+  <!-- Latest compiled and minified CSS -->
+
+<!-- Latest compiled and minified JavaScript -->
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+
+   
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="wrapper">
+<%= render "shared/sidebar" %>
+<div id="page-content-wrapper">
+  <div id = "menu-toggle">
+  <i class="fa fa-arrows-h">
+  <%= link_to "Toggle", :id => "menu-toggle"%>
+</i>
+</div>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+<%= yield %>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+  <% unless flash.empty? %>
+    <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+         toastr['<%= type %>']('<%= f[1] %>');
+        <% end %>
+    </script>
+  <% end %> 
+</body>
+</html>
+
+<script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+    });
+</script>
