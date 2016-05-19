@@ -23,8 +23,10 @@
     <%= f.file_field :acc_avatar %>
   </div>
 
-<%= f.submit "Submit", class: "btn btn-default" %>
+<%= f.submit "Submit", class: "btn btn-default add-to-cart" %>
 
 <% end %>
 
 </form>
+
+<%= link_to "Show Accessory" , admin_accessories_path , :class => "btn btn-primary"%>

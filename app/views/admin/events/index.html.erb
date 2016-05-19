@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+
+<% if @events.exists? %>
+
+<tr>
+	<th>Event Name</th>
+	<th>Event Date</th>
+</tr>
+
+<tr>
+
+<% @events.each do |e| %>
+<td><%= e.event_name %></td>
+<td><%= e.event_date %></td>
+</tr>
+<% end %>
+<% end %>
+  
+</table>
+</br>

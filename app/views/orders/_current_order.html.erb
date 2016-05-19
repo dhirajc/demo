@@ -1,32 +1,31 @@
 
-<table class="responsive-table"></table>
-	<thead>
-		<tr style="background-color:#BCAAA4;">
-			<th data-field="name">Name</th>
-			<th data-field="price">Price</th>
-			<th data-field="quantity">Quantity</th>
-			<th data-field="Total">Line-Total</th>
-		</tr>
-	</thead>
+<table class="responsive-table">
+		<thead>
+			<tr style="background-color:#BCAAA4;">
+				<th data-field="name">Name</th>
+				<th data-field="price">Price &nbsp;</th>
+				<th data-field="quantity">Quantity &nbsp;</th>
+				<th data-field="Total">Line-Total &nbsp;</th>
+			</tr>
+		</thead>
 	<tbody>
 
-	<%# binding.pry %>
+
 	<% @a = 0 %>
 	<% @current_order.ordered_items.each do |index, details| %>
-	<%# binding.pry%>
-	<% @item_total_price = details['look']['price'] * details['quantity']
+	<% @item_total_price = details['look']['price'].to_i * details['quantity']
 		%>
 		<tr>
-			<!-- <td><%#= index %></td> -->
-			<td><%= details['look']['name']%></td>
-			<td><%= details['look']['price']%></td>
-			<% @look_price = details['look']['price'].to_i * details['qty'] %>
-			<td><%= details['qty'] %></td>
+			<td><%= details['look']['name'] %></td>
+			<td><%= details['look']['price'] %></td>
+			<% @look_price = details['look']['price'].to_i * details['quantity'] %>
+			<td><%= details['quantity'] %></td>
 			<td><%= @look_price %></td>
 			<% @a = @look_price + @a %>
 		</tr>
 		</tbody>
+		<%#= @a %>
 		<% end %>
 		
-		<%= @a %>
+		
 	</table>

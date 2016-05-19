@@ -1,4 +1,4 @@
-class Admin::AccessoriesController < ApplicationController
+class Admin::AccessoriesController < Admin::BaseController
 before_filter :authorize_admin
 
 
@@ -31,12 +31,9 @@ def show
 	@accessory = Accessory.find(params[:id])
 # 	respond_to do |format|
 # 		format.html
-# =======
 #   @accessory = Accessory.find(params[:id])
 #   # respond_to do |format|
 #   #   format.html
-# >>>>>>> 67d7f4683c9e5af56bb8f2acb438243f516739d5
-
 # 		format.json {render json: @accessory.to_json(:only => [ :id,:acc_name, :price, :product_id, :variant ], :methods => [:avatar_url]) }
 
 # 		#render :json => @model.to_json(:only => [:id,:name,:homephone,:cellphone])

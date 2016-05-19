@@ -101,7 +101,7 @@
 					</thead>
 					<tbody>
 					  <% @ordered_looks.each do |index, details| %>
-								<% look_id = details[:look][:id] %>
+						<% look_id = details[:look][:id] %>
 						<tr>
 
 							<td class="cart_description" id="look_name_<%= look_id%>">
@@ -144,7 +144,9 @@
 					<%end%>
 				</table>
 			</div>
+			<% if @ordered_looks.length  > 0 %>
 		  <%= button_to 'Checkout' ,{:controller => "checkout", :action => "show", :method => 'post'} %>
+		  <% end %>
 		</div>
 	</section> 
 

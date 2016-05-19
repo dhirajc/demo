@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+
 	def new
 		@event = current_user.events.new
 		@events = Event.where(:user_id => current_user.id)

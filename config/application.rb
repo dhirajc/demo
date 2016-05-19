@@ -24,6 +24,7 @@ module Menguin
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
      config.active_record.raise_in_transactional_callbacks = false
+     config.active_job.queue_adapter = :delayed_job
     #### New added for custom error page 
     #config.exceptions_app = self.routes
     ###

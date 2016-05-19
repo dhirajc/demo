@@ -16,7 +16,6 @@ before_filter :authorize_user
   end
 
   def create
-
     @look = Look.new(looks_params)
     if (params[:look][:neckwear]).present?
       n_price = (Accessory.find(params[:look][:neckwear] ).price )
@@ -36,7 +35,7 @@ before_filter :authorize_user
     total_price = n_price + shirt_price + shoe_price 
       
       if @look.save
-        flash[:notice] = "look successfully created"
+        flash[:notice] = "Look successfully created"
         @look.update_attributes(:price => total_price)
         redirect_to looks_path
       else
@@ -62,7 +61,7 @@ before_filter :authorize_user
   def destroy
     @look = Look.find(params[:id])
     @look.destroy
-    flash[:notice] = "look successfully destroyed"
+    flash[:notice] = "Look successfully destroyed"
     redirect_to looks_path
   end
 
