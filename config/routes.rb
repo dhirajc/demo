@@ -1,5 +1,8 @@
-Rails.application.routes.draw do
+require 'sidekiq/web'
 
+Rails.application.routes.draw do
+  
+mount Sidekiq::Web => '/sidekiq'
 
   namespace :admin do
   get 'dashboard/index'

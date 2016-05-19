@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 
+# Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_token]
+# Sidekiq::Web.set :sessions, Rails.application.config.session_options
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -32,6 +35,12 @@ gem "paperclip", "~> 5.0.0.beta1"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'toastr-rails'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.2.0'
+gem 'redis'
+gem 'sidekiq'
+gem 'celluloid'
+#gem 'sinatra', :require => nil
+gem 'sinatra', '>= 1.3.0', :require => nil
+
 
 group :development, :test do
 	gem 'sqlite3'

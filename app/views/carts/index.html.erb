@@ -144,9 +144,9 @@
 					<%end%>
 				</table>
 			</div>
-			<%# if @ordered_looks.length  > 0 %>
+			<% if @ordered_looks.length  > 0 %>
 		  <%= button_to 'Checkout' ,{:controller => "checkout", :action => "show", :method => 'post'} %>
-		  <%# end %>
+		  <% end %>
 		</div>
 	</section> 
 

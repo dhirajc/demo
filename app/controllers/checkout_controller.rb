@@ -12,7 +12,7 @@ protect_from_forgery :except => [:create]
 	def create
 		if order_params[:status].downcase === "completed"
 			@current_order.update_order(session[:order], order_params)
-			if @current_order.save_order(@current_user)
+			if @current_order.save_order(current_user)
 				session[:order] = {}
 				session[:cart] = {}
 				flash[:success] = "Your order has been successfully placed."
