@@ -7,6 +7,9 @@ def send_invite(user1 , user2)
 end
 
   def order_email(user, items)
+    # a = items
+    # binding.pry
+    # raise items.inspect
     @current_order = JSON.parse(items)
     @user = user
     @order = @user.orders.last.id

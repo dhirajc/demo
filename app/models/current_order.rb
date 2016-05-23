@@ -51,6 +51,8 @@ class Current_Order
 	end
 
 	def save_order(current_user)
+
+		# binding.pry
 		user = current_user
 		new_order = user.orders.new(total: @total, invoice: @invoice, transaction_id: @transaction_id)
 		save_successful = new_order.save

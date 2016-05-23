@@ -38,6 +38,7 @@ gem 'font-awesome-rails', '~> 4.6', '>= 4.6.2.0'
 gem 'redis'
 gem 'sidekiq'
 gem 'celluloid'
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 #gem 'sinatra', :require => nil
 gem 'sinatra', '>= 1.3.0', :require => nil
 
