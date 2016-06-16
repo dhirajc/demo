@@ -45,7 +45,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 
 
 group :development, :test do
-	gem 'sqlite3'
+  gem 'sqlite3'
   gem 'byebug'
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   # gem "awesome_print", require:"ap"
