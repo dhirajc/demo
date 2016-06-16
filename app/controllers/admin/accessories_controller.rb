@@ -59,11 +59,15 @@ def destroy
 	flash[:notice] = "Accessory successfully destroyed"
 	redirect_to admin_accessories_path
 end
+
+def order_all
+	@orders = Order.all
+end
 			
 private
 
 def accessories_params
-	params.require(:accessory).permit(:acc_name,:variant, :price ,:acc_avatar  , :product_id)
+	params.require(:accessory).permit(:acc_name,:variant, :price ,:acc_avatar  , :product_id , :quantity)
 end 	
 
 end

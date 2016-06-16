@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+
+<% if @orders.exists? %>
+
+<tr>
+	<th>Order status</th>
+	<th>Order Total</th>
+	<th>Transaction id</th>
+	<th>User Id</th>
+</tr>
+<tr>
+<% @orders.each do |f| %>
+<td><%= f.status %></td>
+<td><%= f.total %></td>
+<td><%= f.transaction_id%></td>
+<td><%= f.user_id %></td>
+</tr>
+<% end %>
+<% end %>
+  
+</table>
+</br>

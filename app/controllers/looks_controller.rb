@@ -35,6 +35,20 @@ before_filter :authorize_user
     total_price = n_price + shirt_price + shoe_price 
       
       if @look.save
+        # binding.pry
+        
+        nw = @look.neckwear
+        nw = Accessory.find(nw)
+        nw.update_attributes(:quantity => nw.quantity.to_i - 1 )
+
+        sh = @look.shirts
+        sh = Accessory.find(sh)
+        sh.update_attributes(:quantity => sh.quantity.to_i - 1 )
+
+        so = @look.shoes
+        so = Accessory.find(so)
+        so.update_attributes(:quantity => so.quantity.to_i - 1 )
+
         flash[:notice] = "Look successfully created"
         @look.update_attributes(:price => total_price)
         redirect_to looks_path
@@ -60,6 +74,17 @@ before_filter :authorize_user
 
   def destroy
     @look = Look.find(params[:id])
+      nw = @look.neckwear
+      nw = Accessory.find(nw)
+      nw.update_attributes(:quantity => nw.quantity.to_i + 1 )
+
+      sh = @look.shirts
+      sh = Accessory.find(sh)
+      sh.update_attributes(:quantity => sh.quantity.to_i + 1 )
+
+      so = @look.shoes
+      so = Accessory.find(so)
+      so.update_attributes(:quantity => so.quantity.to_i + 1 )
     @look.destroy
     flash[:notice] = "Look successfully destroyed"
     redirect_to looks_path
@@ -68,6 +93,8 @@ before_filter :authorize_user
   def show
     @look = Look.find(params[:id])
   end
+
+  
 
   private 
    

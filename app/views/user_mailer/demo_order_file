@@ -85,6 +85,8 @@
                                     <% @total = @a + @total %>
                                 </tr>
                                 <% end %>
+                                <% @current_order.each do |a| %>
+                                <% end %>
                                 <tr>
                                     <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
                                     <td class="emptyrow"></td>

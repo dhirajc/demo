@@ -10,7 +10,7 @@
       <div class="form-group">
         <%= f.label :neckwear %><br>
         <%#binding.pry%>
-        <%= f.select(:neckwear , Accessory.where("variant IN (?)", "neckwear").pluck(:acc_name,:id),{:prompt => 'Please select bow type'},class:'work') %>
+        <%= f.select(:neckwear , Accessory.where('variant=? AND quantity>?', 'neckwear', '0').pluck(:acc_name,:id),{:prompt => 'Please select bow type'},class:'work') %>
         <div>
         <br />
         <img id="img_neckwear"</img>

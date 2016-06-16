@@ -6,6 +6,7 @@ mount Sidekiq::Web => '/sidekiq'
 
   namespace :admin do
   get 'dashboard/index'
+  get 'accessories/order_all'
   resources :products , except: [:show , :index]  
   resources :accessories
   resources :events 

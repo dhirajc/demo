@@ -17,6 +17,7 @@ protect_from_forgery :except => [:create]
 				session[:cart] = {}
 				flash[:success] = "Your order has been successfully placed."
 				OrderWorker.perform_async(@current_user.id, @current_order.to_json)
+				Current_Order.send_text_message(@current_order)
 				redirect_to root_path
 			else
 				flash[:error] = "An error occured while saving your order. Please try again."

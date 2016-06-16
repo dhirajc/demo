@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511060736) do
+ActiveRecord::Schema.define(version: 20160531070622) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "acc_name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160511060736) do
     t.string   "acc_avatar_content_type"
     t.integer  "acc_avatar_file_size"
     t.datetime "acc_avatar_updated_at"
+    t.string   "quantity"
   end
 
   add_index "accessories", ["product_id"], name: "index_accessories_on_product_id"

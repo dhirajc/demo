@@ -27,6 +27,23 @@ class Current_Order
 		@status = args[:status] || "pending"
 	end
 
+	def self.send_text_message(current_order)
+  	@current_order = current_order
+    total =  @current_order.total.inspect
+    number_to_send_to = "+919028959052"
+    twilio_sid = "AC8c3453bcd97314eea20b996c94e44c56"
+    twilio_token = "795dd5ff31906865a13cd364c6483c0a"
+    twilio_phone_number = "15677034351"
+
+    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+    @twilio_client.account.sms.messages.create(
+      from: "#{twilio_phone_number}",
+      to: number_to_send_to,
+      body: "Your order is in process. Total amount is #{total}"
+      )
+  end
+
 	def paypal_url(current_user, return_url)
 		@user = current_user
 		values = {
@@ -63,6 +80,7 @@ class Current_Order
 															quantity: details["quantity"])
 	end
 end
+# send_text_message
 save_successful
 
 end
